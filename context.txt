@@ -1,0 +1,156 @@
+Preguntas y respuestas:
+	A - Nivel de tu cargo actual o último empleo (Si está cesante)
+		Aa. Presidente o vicepresidente (C-Level)
+
+		Ab. Gerente o Director (Directivo)
+
+		Ac. Jefe o Coordinador (Mando medio)
+
+		Ad. Analista o Auxiliar (Operativo)
+
+		Ae. Nunca he trabajado
+
+	B - Máximo nivel de formación
+		Ba. Doctorado
+
+		Bb. Maestría
+
+		Bc. Especialización
+
+		Bd. Profesional
+
+		Be. Técnico o Tecnólogo
+
+	C - Indica tu especialidad
+		Ca. Ventas
+
+		Cb. Financiero
+
+		Cc. Contable o Impuestos
+
+		Cd. Mercadeo o Growth
+
+		Ce. Cadena de Suministros | Logística | Abastecimiento | Operaciones
+
+		Cf. Comercio Exterior
+
+		Cg. Recursos Humanos
+
+		Ch. Jurídico
+
+		Ci. Compras
+
+		Cj. Producción | Mantenimiento
+
+		Ck. HSE
+
+		Cl. Sostenibilidad
+
+		Cm. Responsabilidad Social
+
+		Cn. Proyectos
+
+	D - Años de experiencia en tu nivel de cargo actual
+		Da. Más de 10 años
+
+		Db. Más de 5 años
+
+		Dc. Más de 3 años
+
+		Dd. Más de un año
+
+		De. Menos de un año
+
+
+
+Resultado por respuestas seleccionadas:
+	- Si marca "Aa", diga lo que diga en las demás:
+		Los empleos de nivel de Presidencia y Vicepresidencia no se buscan, se atraen a partir del netowrking
+
+ 	- Si marca "Ab", "Ac" o "Ad", el empleo que se debe buscar es el mismo o uno superior, es decir: 
+ 		- Si pone "Ab", se le debe buscar: 
+
+ 			Gerente, Director, Presidente o Vicepresidente.
+
+ 		- Si pone "Ac", se le debe buscar:
+
+ 			Jefe, Coordinador, Gerente o Director.
+
+ 		- Si pone "Ad", se le debe buscar:
+
+ 			Analista, Auxiliar, Jefe o Coordinador.
+
+ 	- Si marca "Ae", se le debe buscar:
+ 		Analista o Auxiliar
+
+ 	- Si marca "Ba", podrá aplicar a:
+ 		Especialista, Maestría o Doctorado
+
+ 	- Si marca "Bb", podrá aplicar a:
+ 		Especialista o Maestría
+
+ 	- Si marca "Bc", podrá aplicar a:
+ 		Especialista o Profesional
+
+ 	- Si marca "Bd", podrá aplicar a:
+ 		Profesional
+
+ 	- Si marca "Be", podrá aplicar a:
+ 		Técnico o Tecnólogo
+
+ 	- Si marca "Ca":
+ 		Ventas, Comercial, KAM, Key Account Manager, Gerente de Cuenta o Desarrollo de Negocios, CCO, Sales, Commercial
+
+ 	- Si marca "Cb":
+ 		Financiero, CFO, Administrativo y Financiero, Finanzas, Tesorería, Administrativo, Finantial, Finance
+
+ 	- Si marca "Cc":
+ 		Contable, Impuestos, Taxes, Contabilidad, Accountant
+
+ 	- Si marca "Cd": 
+		Mercadeo, Growth, Marketing, Mercadeo, Trade Marketing, Crecimiento, CMO, Comunicaciones, Communications, Digital Marketing
+
+ 	- Si marca "Ce":
+		Cadena de Suministros, Logística, Abastecimiento, Operaciones, CLO, Supply Chain, logistics, Operations
+
+ 	- Si marca "Cf":
+		Comercio Exterior, Comex, International Trade
+
+ 	- Si marca "Cg":
+		Recursos Humanos, Human Resources, Gestión Humana, RRHH, Talent, Human, HRBP, Human Resources Business Partner
+
+ 	- Si marca "Ch":
+		Jurídico, Legal, Law, CLO
+
+ 	- Si marca "Ci":
+		Compras, Purchase, suministros
+
+ 	- Si marca "Cj":
+		Producción, mantenimiento, manufactura, operations, operaciones, production, maintenance
+
+ 	- Si marca "Ck":
+		HSE, HSEQ, Calidad, Salud Ocupacional, Medio Ambiente, Seguridad
+
+ 	- Si marca "Cl":
+		Sostenibilidad, economía circular, sustainability
+
+ 	- Si marca "Cm":
+		Responsabilidad Social, social responsability, social
+
+ 	- Si marca "Cn":
+		Proyectos, Project, Project manager, planeación, planning, PMO
+
+	- Si marca "Da", podrá aplicar a: 
+		Más de 5 o Más de 10 ofertas de empleo
+
+	- Si marca "Db", podrá aplicar a: 
+		Más de 3 o más de 5 ofertas de empleo
+
+	- Si marca "Dc", podrá aplicar a: 
+		Más de 3 o más de 1 oferta de empleo
+
+	- Si marca "Dd", podrá aplicar a: 
+		Más de 1 oferta de empleo
+
+	- Si marca "De", podrá aplicar a: 
+		Más de 1 oferta de empleo
