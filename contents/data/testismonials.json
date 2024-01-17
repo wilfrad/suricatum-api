@@ -1,0 +1,314 @@
+[
+    {
+        "category" : {
+            "id" : "t1",
+            "display_name" : "Especialización"
+        },
+        "contents" : [
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/8RgsJz6uus0/mqdefault.jpg",
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_ricardo-gonzales.jpg",
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-ecopetrol.jpg"
+                },
+                "main_header" : "RICARDO GONZÁLEZ - HOY ES RENEWABLE ENERGY SENIOR BUSINESS DEVELOPER EN ECOPETROL",
+                "tag" : "Ventas",
+                "profile_url" : "https://www.linkedin.com/in/msc-renewable-energyricardogonzalez/",
+                "content_title" : "Consigue empleo en Ecopetrol para inicio en Diciembre - Testimonio de Outplacement de Suricatum",
+                "content_url" : "8RgsJz6uus0"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/HuxWOKfsyk8/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_armando-moreno.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-falabella.jpg"
+                },
+                "main_header" : "ARMANDO MORENO - HOY ES GERENTE DE TECNOLOGÍA EN FALABELLA",
+                "tag" : "Tecnología",
+                "profile_url" : "https://www.linkedin.com/in/armandomorenodirectorit/",
+                "content_title" : "Otro caso de éxito de Suricatum en la consecución de empleo",
+                "content_url" : "HuxWOKfsyk8"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/HkfOKjEPlWo/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_carolina-cubillos.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-proyectos-faraday.jpg"
+                },
+                "main_header" : "CAROLINA CUBILLOS - HOY ES DIRECTORA DE SOSTENIBILIDAD EN FLEXO SPRING",
+                "tag" : "Sostenibilidad",
+                "profile_url" : "https://www.linkedin.com/in/carolinacubillosp/",
+                "content_title" : "Testimonio de Carolina Cubillos - Directora de Sostenibilidad",
+                "content_url" : "HkfOKjEPlWo"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/yqr1gpmhHyg/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_luz-angela-martinez.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-los-olivos.jpg"
+                },
+                "main_header" : "LUZ ANGELA MARTÍNEZ - HOY ES DIRECTORA DE GESTIÓN HUMANA EN COOPSERFUN",
+                "tag" : "Recursos Humanos",
+                "profile_url" : "https://www.linkedin.com/in/luz-angela-martinez-prieto-50646a22/",
+                "content_title" : "Ser felices no debería ser negociable - Testimonio de 2 meses de Outplacement",
+                "content_url" : "yqr1gpmhHyg"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/Xj5uiBiwcQU/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_yovani-pineda.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-globant.jpg"
+                },
+                "main_header" : "FEDERICO MEJIA - SENIOR PROJECT MANAGER EN GLOBANT",
+                "tag" : "Proyectos",
+                "profile_url" : "https://www.linkedin.com/in/federico-mejia-montes/",
+                "content_title" : "Testimonio de Federico Mejía - Exitoso cambio de sector",
+                "content_url" : "Xj5uiBiwcQU"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/OgeZvlz7o04/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_julian-russi.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-kardex.jpg"
+                },
+                "main_header" : "JULIAN RUSSI - HOY ES MARKETING MANAGER PARA LA REGIÓN LATAM EN KARDEX",
+                "tag" : "Marketing",
+                "profile_url" : "https://www.linkedin.com/in/yesicamejia/",
+                "content_title" : "Cómo conseguir empleo en una multinacional - Testimonio Julian Russi",
+                "content_url" : "OgeZvlz7o04"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/upVIqBMOpTs/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_yesica-mejia.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-natura-co.jpg"
+                },
+                "main_header" : "YESICA MEJÍA - HOY LABORA EN NATURA & CO",
+                "tag" : "Jurídico",
+                "profile_url" : "https://www.linkedin.com/in/msc-renewable-energyricardogonzalez/",
+                "content_title" : "Pasó a una multinacional - Testimonio de Abogada - Dió el Sí a Avon",
+                "content_url" : "upVIqBMOpTs"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/PR-9yhKT32c/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_franco-pantoja.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-o-i.jpg"
+                },
+                "main_header" : "FRANCO PANTOJA - HOY GERENTE EHS REGIONAL EN PELDAR (O-I)",
+                "tag" : "HSE",
+                "profile_url" : "https://www.linkedin.com/in/francoandrespantoja/",
+                "content_title" : "Outplacement exitoso en C-Level de nivel regional en el área de HSE",
+                "content_url" : "PR-9yhKT32c"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/Jq1uKlBDSws/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_norka-cordero.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-knight.jpg"
+                },
+                "main_header" : "NORKA CORDERO - HOY ES GERENTE FINANCIERA EN KNIGHT",
+                "tag" : "Dirección",
+                "profile_url" : "https://www.linkedin.com/in/norkacordero/",
+                "content_title" : "Entrevista a Norka Cordero - Consiguió empleo como Directora Financiera",
+                "content_url" : "Jq1uKlBDSws"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/zjPEi5HDlxo/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_paula-valencia.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-nestle.jpg"
+                },
+                "main_header" : "Testimonio Paula Valencia - No paran de llegar los casos de éxito",
+                "tag" : "Comunícaciones",
+                "profile_url" : "https://www.linkedin.com/in/paulavalenciap/",
+                "content_title" : "Testimonio Paula Valencia - No paran de llegar los casos de éxito",
+                "content_url" : "zjPEi5HDlxo"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/texyTGEe55o/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_fabian-abella.png" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand_lx-pantos.png"
+                },
+                "main_header" : "FABIÁN ABELLA - HOY LABORA EN LX PANTOS",
+                "tag" : "Cadena de Suministros",
+                "profile_url" : "https://www.linkedin.com/in/fabian-andres-abella-ramirez/",
+                "content_title" : "De una larga cesantía en logística a pasar una Gerencia General",
+                "content_url" : "texyTGEe55o"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/BpsLJwFmzOk/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_claudia-ramirez.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-tronex.jpg"
+                },
+                "main_header" : "CLAUDIA RAMÍREZ - HOY LABURA EN TRONEX",
+                "tag" : "Admin & Financiero",
+                "profile_url" : "https://www.linkedin.com/in/claudiaramirez1/",
+                "content_title" : "Testimonio de Claudia Ramírez - Outplacement exitoso en Medellín",
+                "content_url" : "BpsLJwFmzOk"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/LjjNoRmTsX0/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_alexis-carrasco.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-holcim.jpg"
+                },
+                "main_header" : "ALEXIS CARRASCO - HOY ES GERENTE DE PRODUCCIÓN EN HOLCIM",
+                "tag" : "Producción",
+                "profile_url" : "https://www.linkedin.com/in/alexiscarrasco/",
+                "content_title" : "Valorización e Internacionalización después de un Programa de Outplacement de Suricatum",
+                "content_url" : "LjjNoRmTsX0"
+            }
+        ]
+    },
+    {
+        "category" : { 
+            "id" : "t2",
+            "display_name" : "Nivel"
+        },
+        "contents" : [
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/IEVEVj6Vt5U/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_andres-ramirez.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-sintec-consulting.jpg"
+                },
+                "main_header" : "ANDRÉS RAMÍREZ - HOY ES BUSINESS DEVELOPMENT SENIOR MANAGER EN SINTEC CONSULTING",
+                "tag" : "C - Level",
+                "profile_url" : "https://www.linkedin.com/in/aramigir/",
+                "content_title" : "Testimonio de éxito en la rama de la consultoría",
+                "content_url" : "IEVEVj6Vt5U"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/c90x2COuQP8/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_juan-fernando-hernandez.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-proyectos-faraday.jpg"
+                },
+                "main_header" : "JUAN FERNANDO HERNÁNDEZ - SU EMPRESA ES PROYECTOS FARADAY",
+                "tag" : "Emprendedor",
+                "profile_url" : "https://www.linkedin.com/in/luis-fernando-hernandez-cabarcas-407807b5/",
+                "content_title" : "Videocast - Inspiración + Emprendimiento (Segunda parte de su entrevista)",
+                "content_url" : "c90x2COuQP8"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/KiGDvaKGDKk/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_karel-villalba.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-lili-pink.jpg"
+                },
+                "main_header" : "KAREL VILLALBA - HOY LABORA EN LILI PINK",
+                "tag" : "Mando - Medio",
+                "profile_url" : "https://www.linkedin.com/in/karelvillalbaalonso/",
+                "content_title" : "Doble Outplacement en dos meses? ...y aún hay gente pensando que no hay empleos",
+                "content_url" : "KiGDvaKGDKk"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/syYYrBxF8jI/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_gustavo-rojas.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-suricatum.jpg"
+                },
+                "main_header" : "GUSTAVO ROJAS",
+                "tag" : "Colaborador",
+                "profile_url" : "https://www.linkedin.com/in/cogustavorojas/",
+                "content_title" : "Testimonio de un colaborador de Suricatum - Gustavo Rojas",
+                "content_url" : "syYYrBxF8jI"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/i6IEc2yaZ0g/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_sayuri-arana.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-lafer.jpg"
+                },
+                "main_header" : "SAYURI ARANA - PASÓ DE ANALISTA A DIRECTORA",
+                "tag" : "Junior",
+                "profile_url" : "https://www.linkedin.com/in/sayuri-arana-bola%C3%B1os-97b44b34/",
+                "content_title" : "De un cargo Junior a uno Senior - Testimonio de Sayuri Arana",
+                "content_url" : "i6IEc2yaZ0g"
+            }
+        ]
+    },
+    {
+        "category" : {
+            "id" : "t3",
+            "display_name" : "País"
+        },
+        "contents" : [
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/ystuYeosmr8/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_juan-pablo-pelaez.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-tmx.jpg"
+                },
+                "main_header" : "JUAN PABLO PELÁEZ - PROJECT MANAGER",
+                "tag" : "Australia",
+                "profile_url" : "https://www.linkedin.com/in/pablo-pelaez/",
+                "content_title" : "Testimonio desde Melbourne (Australia) - Juan Pablo Peláez",
+                "content_url" : "ystuYeosmr8"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/DxwlnkjGIFw/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_karen-salvador.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-texcumar.jpg"
+                },
+                "main_header" : "KAREN SALVADOR - GERENTE DE TALENTO HUMANO EN TEXCUMAR",
+                "tag" : "Ecuador",
+                "profile_url" : "https://www.linkedin.com/in/karen-tatiana-salvador-moncayo-59743694/",
+                "content_title" : "Testimonio de Outplacement en Ecuador",
+                "content_url" : "DxwlnkjGIFw"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/C08eUYUtpCc/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_miguel-lekiefre.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-cisco.jpg"
+                },
+                "main_header" : "MIGUEL LEKIEFFRE - CYBER SECURITY PRE-SALES SPECIALIST",
+                "tag" : "España",
+                "profile_url" : "https://www.linkedin.com/in/lekieffre/",
+                "content_title" : "Testimonio Suricatum - Miguel Lekieffre - Transición laboral de Colombia a España",
+                "content_url" : "C08eUYUtpCc"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/8pf7gx1PSHc/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_manuel-lopez.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-siemens-energy.jpg"
+                },
+                "main_header" : "MANUEL LÓPEZ - PASÓ A ERNST & YOUNG, UST Y AHORA SIEMENS ENERGY",
+                "tag" : "México",
+                "profile_url" : "https://www.linkedin.com/in/msc-renewable-energyricardogonzalez/",
+                "content_title" : "¡Que viva México! - Testimonio de éxito de Outplacement Suricatum - Manuel López",
+                "content_url" : "8pf7gx1PSHc"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/e_L4BQQ9RCU/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_melisa-ojeda.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-eficaz.jpg"
+                },
+                "main_header" : "MELISA OJEDA - HOY ES ADMINISTRADORA GENERAL EN EFICAZ S.A",
+                "tag" : "Perú",
+                "profile_url" : "https://www.linkedin.com/in/melisa-ojeda-moret-253917a2/",
+                "content_title" : "Testimonio de Outplacement en Perú - Eligió con quién trabajar",
+                "content_url" : "e_L4BQQ9RCU"
+            },
+            {
+                "images" : {
+                    "content_thumbnail" : "http://img.youtube.com/vi/LjjNoRmTsX0/mqdefault.jpg" ,
+                    "profile_photo" : "https://suricatum.com/wp-content/uploads/2023/06/linkedin_alexis-carrasco.jpg" ,
+                    "brand_logotype" : "https://suricatum.com/wp-content/uploads/2023/06/brand-holcim.jpg"
+                },
+                "main_header" : "ALEXIS CARRASCO - HOY ES GERENTE DE PRODUCCIÓN EN HOLCIM",
+                "tag" : "El Salvador",
+                "profile_url" : "https://www.linkedin.com/in/alexiscarrasco/",
+                "content_title" : "Valorización e Internacionalización después de un Programa de Outplacement de Suricatum",
+                "content_url" : "LjjNoRmTsX0"
+            }
+        ]
+    }
+]

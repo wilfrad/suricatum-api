@@ -5,20 +5,20 @@ from scrapers.scraper import HEADERS, Job, Scraper
 
 class GoogleJobsScraper(Scraper):
     def __init__(self, job, url_params):
-        if job != None:
+        if job:
             self.job = urllib.parse.quote(job)
         self.url_params = url_params
         self.jobs = []
-        
         self.__build_url_request()
 
     def __build_url_request(self):
         base_url = f'https://www.google.com/search?q={self.job}&ibp=htl;jobs&htichips='
         
         params = ''
-        for key, value in self.url_params.items():
-            if value != None:
-                params += f'{key}={value}' + ','
+        if False:
+            for key, value in self.url_params.items():
+                if value != None:
+                    params += f'{key}={value}' + ','
         
         self.base_url = base_url + params[:-1]
 

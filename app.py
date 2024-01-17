@@ -1,8 +1,8 @@
-import urllib
 from flask import Flask, request, render_template, jsonify
 from random import shuffle
 from scrapers.scraper import Scraper
 from scrapers.jobs_scraper import GoogleJobsScraper, MichaelPageScraper
+from contents.content import Content, get_contents_by_category, get_content_by_id, get_categories
 
 app = Flask(__name__)
 
@@ -10,18 +10,87 @@ app = Flask(__name__)
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-    response.headers.add('Access-Control-Allow-Methods', 'GET, POST')
+    response.headers.add('Access-Control-Allow-Methods', 'GET')
     return response
 
 @app.errorhandler(404)
-def page_not_found(error):
+def page_not_found(self):
     return render_template("page-404.html")
 
-@app.route("/")
-def get_scraper_response(methods=['GET']):
+########################################
+# Suricatum multimedia contents routes
+########################################
+
+""" Get cards of category
+    Url params => 
+        type_content: content name
+        category: category name
+    
+    return => html rendered
+"""
+@app.route("/contenido/lista", methods=['GET'])
+def get_all_content():
+    type_content = request.args.get('type_content')
+    category = request.args.get('category')
+
+    data = get_contents_by_category(type_content=type_content, selected_category=category)
+    
+    if data == []:
+        return jsonify('Not found'), 404
+    
+    return jsonify(render_template("video_card.html", contents=data, type_enum=Content.Type, type_content=type_content)), 200
+
+""" Get full content
+    Url params => 
+        type_content: content name
+        id: content original id
+        
+    return => html rendered
+"""
+@app.route("/contenido/solo", methods=['GET'])
+def get_single_content():
+    type_content = request.args.get('type_content')
+    content_id = request.args.get('id')
+
+    data = get_content_by_id(type_content=type_content, content_id=content_id)
+    
+    if data == None:
+        return jsonify('Not found'), 404
+    
+    return jsonify(render_template("video_container.html", content=data, type_enum=Content.Type, type_content=type_content)), 200
+
+""" Get content category list
+    Url params => 
+        type_content: content name
+        
+    return => json dictionary
+"""
+@app.route("/contenido/categorias", methods=['GET'])
+def get_content_categories():
+    type_content = request.args.get('type_content')
+
+    data = get_categories(type_content=type_content)
+    
+    if data == None:
+        return jsonify('Not found'), 404
+    
+    return jsonify(data), 200
+
+########################################
+# Meta-Search Routes
+########################################
+
+""" Get card job offers to scrapers
+    Url params => 
+        job: charge + specialization 
+        
+    return => html rendered
+"""
+@app.route("/buscador-ofertas", methods=['GET'])
+def get_scraper_response():
     job_name = request.args.get('jobname')
 
-    google: Scraper = GoogleJobsScraper(job=job_name)
+    google: Scraper = GoogleJobsScraper(job=job_name, url_params=[])
     michael: Scraper = MichaelPageScraper(job=job_name)
 
     google.build_jobs()

@@ -1,0 +1,25 @@
+
+{% for card in contents %}
+<button type="button"
+    class="flex items-center text-slate-500 rounded-lg hover:text-slate-600 hover:bg-slate-200 p-2 space-x-2 focus-visible:outline-none focus-visible:bg-[#95d8d8] transition-colors duration-150 ease-in-out" :class="currentContent == '{{ card.id }}' && 'bg-slate-200' " 
+    @click="showContent('{{ card.id }}'); window.root.scrollTo({top: 0, behavior: 'smooth'})">
+    <img class="w-2/5 bg-slate-200 aspect-[16/9] rounded-lg"
+        alt="suricatum portada programa de desarrollo profesional 2024"
+        width="300" height="200"
+        {% if type_content == type_enum.TESTIMONIALS.value %}
+        src="http://img.youtube.com/vi/{{ card.content_url }}/mqdefault.jpg"
+        {% endif %}
+        {% if type_content == type_enum.SURICATUM_TV.value %}
+        src="{{ card.images.content_cover }}"
+        {% endif %}
+        alt="Tab 01" />
+    <div class="w-3/5 md:pr-4 flex flex-col items-start">
+        <span
+            class="text-white text-sm text-start font-semibold line-clamp-1 bg-[#009ca6] px-2 rounded-lg">{{
+            card.tag }}</span>
+        <h1 class="text-md text-start font-bold line-clamp-2">
+            {{ card.content_title }}
+        </h1>
+    </div>
+</button>
+{% endfor %}
