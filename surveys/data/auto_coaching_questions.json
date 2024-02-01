@@ -1,0 +1,110 @@
+[
+    {
+        "id": "1",
+        "statement": "¿Por qué no estás trabajando donde quieres?",
+        "responses": [
+            {
+                "selections": {
+                    "Aa" : "No sé cómo encontrar un buen trabajo",
+                    "Ab" : "Busco ofertas en las bolsas de empleo y aplico, pero no me llaman",
+                    "Ac" : "Entro a trabajos que no me gustan o terminan mal casi siempre",
+                    "Ad" : "Llevo mucho tiempo en la misma empresa y me da miedo irme",
+                    "Ae" : "Tengo 4 procesos de selección al mes, pero en entrevistas se acaba todo",
+                    "Af" : "Sí trabajo donde yo quiero"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "2",
+        "statement": "¿Qué te detiene al momento de buscar ayuda?",
+        "responses": [
+            {
+                "selections": {
+                    "Ba" : "Siento que es muy caro un servicio de Outplacement, yo no merezco algo así",
+                    "Bb" : "Me da miedo hacer algo así y no me funcione y siga en las mismas",
+                    "Bc" : "Yo ya he hecho Outplacement y eso no me funcionó",
+                    "Bd" : "Yo no entiendo claramente qué es un Outplacement y si eso me sirviera",
+                    "Be" : "No tengo tiempo para regalarme un Outplacement, tengo otras prioridades",
+                    "Bf" : "No me detiene nada"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "3",
+        "statement": "¿Qué necesitas para superar tus dudas y avanzar?",
+        "responses": [
+            {
+                "selections": {
+                    "Ca" : "Necesito dinero porque no tengo cómo pagar un Programa de Outplacement",
+                    "Cb" : "Necesito tiempo para pensar nuevas excusas para no hacer Outplacement",
+                    "Cc" : "Necesito conversar con Suricatum para entender cómo me pueden ayudar",
+                    "Cd" : "Yo necesito que alguien me garantice que me va a salir empleo",
+                    "Ce" : "Necesito un programa en el que me hagan el trabajo de conseguirme empleo",
+                    "Cf" : "Yo no tengo dudas y tengo disposición en avanzar"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "4",
+        "statement": "¿Qué necesitas para superar tus dudas y avanzar?",
+        "responses": [
+            {
+                "selections": {
+                    "Da" : "Quisiera tener mejor calidad de vida y ser feliz en lo que trabaje",
+                    "Db" : "Quiero otro trabajo donde me paguen más",
+                    "Dc" : "Quiero dejar de estar cesante, busco cualquier trabajo",
+                    "Dd" : "Quiero salir del trabajo que tengo, no importa a cuál vaya",
+                    "De" : "Quiero un cambio de carrera, no me interesa la calidad de vida",
+                    "Df" : "No tengo claro qué es lo que quiero cambiar"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "5",
+        "statement": "¿En cuánto tiempo quieres lograr un mejor empleo?",
+        "responses": [
+            {
+                "selections": {
+                    "Ea" : "En el tiempo que sea necesario, no tengo prisa",
+                    "Eb" : "No sé en cuánto tiempo lograr un mejor empleo",
+                    "Ec" : "Necesito un mejor empleo en menos de 30 días",
+                    "Ed" : "Quisiera lograr un buen empleo entre 30 a 90 días",
+                    "Ee" : "En sí no quiero cambiar de empleo",
+                    "Ef" : "Me parece bien encontrar empleo entre 100 a 200 días"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "6",
+        "statement": "¿Qué proyectos tendrías si te ubicaras en un mejor empleo?",
+        "responses": [
+            {
+                "selections": {
+                    "Fa" : "Estudiar un postgrado que me interesa y/o realizar otra inversión en mí",
+                    "Fb" : "Comprar otro inmueble y/o comprar otro vehículo y/o mudarnos a otra ciudad",
+                    "Fc" : "Iniciar mi propio emprendimiento al tener más recursos",
+                    "Fd" : "Ahorrar más dinero y/o adquirir mejores seguros de vida y/o salir de deudas",
+                    "Fe" : "No tengo ningún proyecto en específico por cambiar de empleo",
+                    "Ff" : "No quiero cambiar de empleo"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    }
+]

@@ -1,0 +1,356 @@
+[
+    {
+        "id": "1",
+        "statement": "¿Cuál es su aspiración salarial?",
+        "responses": [
+            {
+                "selections": {
+                    "Aa": "Menos de 1 millón de pesos colombianos",
+                    "Ab":"Entre 1 millón y 2 millones de pesos colombianos",
+                    "Ac": "Entre 2 millones y 5 millones de pesos colombianos",
+                    "Ad": "Entre 5 millones y 10 millones de pesos colombianos",
+                    "Ae": "Entre 10 millones y 15 millones de pesos colombianos",
+                    "Af": "Más de 15 millones de pesos colombianos"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "2",
+        "statement": "Situación profesional actual",
+        "responses": [
+            {
+                "selections": {
+                    "Ca": "Empleado",
+                    "Cb": "Cesante"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "3",
+        "statement": "Años de experiencia total | Nivel del último/actual cargo",
+        "responses": [
+            {
+                "statement": "Mi último/actual cargo es",
+                "selections": {
+                    "Da": "Operativo",
+                    "Db": "Mando-medio",
+                    "Dc": "Alta dirección"
+                },
+                "response_behavior": "multi"
+            },
+            {
+                "statement": "Años de experiencia",
+                "selections": {
+                    "Ea": "Tengo entre 2 a 5 años de experiencia",
+                    "Eb": "Tengo entre 5 a 10 años de experiencia",
+                    "Ec": "Tengo más de 10 años de experiencia"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "multi"
+    },
+    {
+        "id": "4",
+        "statement": "En tu actual/último cargo, ¿Cuánto tiempo llevas/duraste?",
+        "responses": [
+            {
+                "selections": {
+                    "Fa": "Menos de un año",
+                    "Fb": "Entre 1 a 3 años",
+                    "Fc": "Entre 4 a 6 años",
+                    "Fd": "Más de 6 años"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "5",
+        "statement": "¿Has tenido logros de alto impacto en tu última/actual experiencia?",
+        "responses": [
+            {
+                "selections": {
+                    "Ga": "Si",
+                    "Gb": "No"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "6",
+        "statement": "¿Te han ascendido en tu última/actual empresa?",
+        "responses": [
+            {
+                "selections": {
+                    "Ha": "Si",
+                    "Hb": "No"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "7",
+        "statement": "Indique su balance entre años de experiencia total y nivel de formación máximo",
+        "responses": [
+            {
+                "statement": "Nivel de formación máximo",
+                "selections": {
+                    "Ia": "No soy profesional",
+                    "Ib": "Soy profesional",
+                    "Ic": "Soy especialista",
+                    "Id": "Tengo Maestría"
+                },
+                "response_behavior": "multi"
+            },
+            {
+                "statement": "Años de experiencia total",
+                "selections": {
+                    "Ja": "Tengo menos de un año de experiencia",
+                    "Jb": "Tengo entre 1 a 5 años de experiencia",
+                    "Jc": "Tengo entre 6 a 10 años de experiencia",
+                    "Jd": "Tengo más de 10 años de experiencia"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "multi"
+    },
+    {
+        "id": "8",
+        "statement": "¿Cuál es tu nivel de inglés?",
+        "responses": [
+            {
+                "selections": {
+                    "Ka": "Ninguno - Sin nivel",
+                    "Kb": "Sólo puedo leer y escribirlo muy bien",
+                    "Kc": "Lo puedo leer y escribir muy bien y entiendo con dificultad lo que me dicen, pero no lo hablo bien",
+                    "Kd": "Lo puedo leer, escribir y entiendo todo lo que me dicen, pero no lo hablo fluido",
+                    "Ke": "Tengo dominio avanzado en lectura, escritura y conversación en inglés"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "9",
+        "statement": "Indique el promedio mensual de qué tanto le invitan a participar en procesos de selección",
+        "responses": [
+            {
+                "selections": {
+                    "La": "Menos de una vez al mes",
+                    "Lb": "Entre una a tres veces al mes",
+                    "Lc": "Más de tres veces al mes"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "10",
+        "statement": "Número de seguidores que tienes en Linkedin (Que te siguen a ti)",
+        "responses": [
+            {
+                "selections": {
+                    "Ma": "Tengo menos de 100 seguidores",
+                    "Mb": "Tengo entre 100 a 500 seguidores",
+                    "Mc": "Tengo entre 500 a 5.000 seguidores",
+                    "Md": "Tengo más de 5.000 seguidores"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "11",
+        "statement": "¿Cuál es su puntaje en Linkedin (SSI)?",
+        "responses": [
+            {
+                "selections": {
+                    "Na": "No sé que es el puntaje de Linkedin - SSI",
+                    "Nb": "Tengo menos de 30 puntos de SSI",
+                    "Nc": "Tengo entre 30 a 50 puntos de SSI",
+                    "Nd": "Tengo entre 50 a 70 puntos de SSI",
+                    "Ne": "Tengo más de 70 puntos de SSI"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "12",
+        "statement": "¿Te invitan a participar en otras actividades fuera de tu empleo?",
+        "responses": [
+            {
+                "selections": {
+                    "Oa": "A ninguna",
+                    "Ob": "A dictar conferencias",
+                    "Oc": "A ser docente catedrático o de diplomados"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "13",
+        "statement": "¿Qué tan fácil te resulta hacer nuevos amigos?",
+        "responses": [
+            {
+                "selections": {
+                    "Pa": "Muy difícil - Soy una persona muy poco empática y solitaria",
+                    "Pb": "Difícil - Soy una persona que le cuesta socializar",
+                    "Pc": "Complicado - Me cuesta confiar en las personas e interactuar más allá de lo profesional",
+                    "Pd": "Fácil - Suelo escuchar a las personas y entenderlas para ayudarlas",
+                    "Pe": "Supremamente fácil - Suelo ser una persona muy sociable y el centro de las conversaciones"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "14",
+        "statement": "¿Cómo te sueles comportar ante una dificultad?",
+        "responses": [
+            {
+                "selections": {
+                    "Qa": "Analizo la situación y busco las alternativas para solucionarlo",
+                    "Qb": "Tomo acción oportuna, antes que el problema crezca",
+                    "Qc": "Suelo ser prudente, esperar que la situación mejore",
+                    "Qd": "Me vengo abajo ante el problema, siento que tengo muy mala suerte",
+                    "Qe": "Me pongo de actitud negativa en una persona difícil de tratar"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "15",
+        "statement": "Tu estado anímico actual es:",
+        "responses": [
+            {
+                "selections": {
+                    "Ra": "Depresivo", 
+                    "Rb": "De ansiedad", 
+                    "Rc": "Estable",
+                    "Rd": "Lleno de motivación por mejorar",
+                    "Re": "Lleno de esperanza por lograr algo positivo"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "16",
+        "statement": "Tu actitud frente a la crítica es:",
+        "responses": [
+            {
+                "selections": {
+                    "Sa": "Tóxica - Siento que me atacan y respondo peor",
+                    "Sb": "Reactiva - Si me atacan suelo responder de igual forma",
+                    "Sc": "Conciliadora - Suelo buscar alguna forma de encontrar soluciones",
+                    "Sd": "Positiva - Suelo tratar de ver el lado bueno de lo que me dicen",
+                    "Se": "Relajada - Realmente me da lo mismo lo que piensen de mi"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "17",
+        "statement": "Tu disposición a trabajar en tu Outplacement para conseguir un nuevo empleo es:",
+        "responses": [
+            {
+                "selections": {
+                    "Ta": "Mucha disposición, pero si no veo resultados, dejo de insistir",
+                    "Tb": "Consistente, inclusive si no veo resultados, sigo intentándolo",
+                    "Tc": "Tengo mis reservas, quiero invertir sólo el tiempo necesario",
+                    "Td": "No tengo tiempo, quisiera que alguien me consiga trabajo por mi",
+                    "Te": "No tengo tiempo, sé lo que valgo y sé que las empresas vienen a mi, sin yo hacer mucho"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "18",
+        "statement": "¿Qué tan importante es para ti el salario?",
+        "responses": [
+            {
+                "selections": {
+                    "Ua": "Me parece algo muy malo y de pensamiento materialista",
+                    "Ub": "Me es indiferente ganar mucho o poco, si soy feliz",
+                    "Uc": "Me parece muy importante, es uno de los ejes para ser feliz",
+                    "Ud": "Entre más alto mejor, donde me paguen más me muevo"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "19",
+        "statement": "¿Aguantarías un mal ambiente laboral por un buen salario?",
+        "responses": [
+            {
+                "selections": {
+                    "Va": "No rotundo, renunciaría aunque me quede cesante",
+                    "Vb": "No, buscaría otro trabajo y cuando me salga, renuncio al que tengo",
+                    "Vc": "Depende, hay salarios tan competitivos que vale la pena aguantar el mal ambiente",
+                    "Vd": "Claro que sí, la situación no está como para estar renunciando ante cualquier dificultad laboral"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "20",
+        "statement": "¿Qué tan cerca estás de ganar un millón de pesos al mes por cada año de experiencia que tienes?",
+        "responses": [
+            {
+                "selections": {
+                    "Wa": "Muy mal, tengo muchos años de experiencia y un salario muy por debajo en esa relación",
+                    "Wb": "Moderadamente cerca, gano aproximadamente un millón de pesos colombianos al mes, por cada año de experiencia que tengo",
+                    "Wc": "Muy bien, tengo menos años de experiencia que millones de pesos al mes que me gano mensuales"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "21",
+        "statement": "¿Aceptarías estancarte laboralmente con tal de ganar bien?",
+        "responses": [
+            {
+                "selections": {
+                    "Xa": "Sí, siempre que me paguen muy bien",
+                    "Xb": "No, para mi el salario debe ir al mismo nivel del cargo"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    }
+]

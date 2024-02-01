@@ -1,0 +1,79 @@
+[
+    {
+        "id": "1",
+        "statement": "Nivel de tu cargo actual o último empleo (Si está cesante)",
+        "responses": [
+            {
+                "selections": {
+                    "Aa" : "Presidente o vicepresidente (C-Level)",
+                    "Ab" : "Gerente o Director (Directivo)",
+                    "Ac" : "Jefe o Coordinador (Mando medio)",
+                    "Ad" : "Analista o Auxiliar (Operativo)",
+                    "Ae" : "Nunca he trabajado"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "2",
+        "statement": "Máximo nivel de formación",
+        "responses": [
+            {
+                "selections": {
+                    "Ba" : "Doctorado",
+                    "Bb" : "Maestría",
+                    "Bc" : "Especialización",
+                    "Bd" : "Profesional",
+                    "Be" : "Técnico o Tecnólogo"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "3",
+        "statement": "Indica tu especialidad",
+        "responses": [
+            {
+                "selections": {
+                    "Ca" : "Ventas",
+                    "Cb" : "Financiero",
+                    "Cc" : "Contable o Impuestos",
+                    "Cd" : "Mercadeo o Growth",
+                    "Ce" : "Cadena de Suministros | Logística",
+                    "Cf" : "Comercio Exterior",
+                    "Cg" : "Recursos Humanos",
+                    "Ch" : "Jurídico",
+                    "Ci" : "Compras",
+                    "Cj" : "Producción | Mantenimiento",
+                    "Ck" : "HSE",
+                    "Cl" : "Sostenibilidad",
+                    "Cm" : "Responsabilidad Social",
+                    "Cn" : "Proyecto"
+                },
+                "response_behavior": "list"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "4",
+        "statement": "Años de experiencia en tu nivel de cargo actual",
+        "responses": [
+            {
+                "selections": {
+                    "Da" : "Más de 10 años",
+                    "Db" : "Más de 5 años",
+                    "Dc" : "Más de 3 años",
+                    "Dd" : "Más de un año",
+                    "De" : "Menos de un año"
+                },
+                "response_behavior": "multi"
+            }
+        ],
+        "question_behavior": "single"
+    }
+]

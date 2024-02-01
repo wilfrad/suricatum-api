@@ -1,5 +1,7 @@
 from enum import Enum
 from json import loads
+from datetime import datetime
+from urllib.parse import urlparse, parse_qs
 
 class Content:
     class Type(Enum):
@@ -11,6 +13,35 @@ class Content:
         self.category = category
         self.contents = contents
 
+class Behavior:
+    """ If date_str is Date format, return days since date
+        if is not format, return same
+    """
+    def get_days_since_date(self, date_str):
+
+        try:
+            new_date = datetime.strptime(date_str, '%Y/%m/%d')
+            return f"Hace {(datetime.now() - new_date).days} dias"
+        except (TypeError, ValueError):
+            return date_str
+
+    """ Divide url cover validate 
+        if contained target in route
+    """ 
+    def is_contain_default_cover(self, target):
+        components_url = urlparse(self.images.content_cover)
+
+        route = components_url.path
+        
+        print(self.images.content_cover)
+        
+        return #target in route.split('/')
+
+    def unique_id(self):
+
+        unique_str = f"{self.tag}-{self.content_title}-{self.content_url}"
+        return hash(unique_str)
+
 class Thumbnails:
 
     def __init__(self, content_thumbnail = None, content_cover = None, profile_photo = None, brand_logotype = None):
@@ -20,7 +51,7 @@ class Thumbnails:
         self.profile_photo = profile_photo
         self.brand_logotype = brand_logotype
 
-class TestimonialContent:
+class TestimonialContent(Behavior):
 
     def __init__(self, images, main_header, tag, profile_url, content_title, content_url):
 
@@ -31,25 +62,17 @@ class TestimonialContent:
         self.content_title = content_title
         self.content_url = content_url
         self.id = content_url
-        
-    def unique_id(self):
-        unique_str = f"{self.tag}-{self.content_title}-{self.content_url}"
-        return hash(unique_str)
 
 
-class SuricatumTvContent:
+class SuricatumTvContent(Behavior):
 
     def __init__(self, images, tag, content_title, content_url):
 
         self.images = Thumbnails(**images)
-        self.tag = tag
+        self.tag = self.get_days_since_date(tag)
         self.content_title = content_title
         self.content_url = content_url
         self.id = content_url
-        
-    def unique_id(self):
-        unique_str = f"{self.tag}-{self.content_title}-{self.content_url}"
-        return hash(unique_str)
 
 TESTIMONIALS_CONTENT = None
 SURICATUM_TV_CONTENT = None

@@ -1,0 +1,403 @@
+{
+    "axis": [
+        {
+            "id": 1,
+            "name": "Eje 1 - Experiencia y Cargo",
+            "responses" : [
+                {
+                    "quest_id" : 2,
+                    "options": [
+                        { "key" : "Ca", "score" : 5, "mode" : "sum" },
+                        { "key" : "Cb", "score" : 0, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 3,
+                    "options": [
+                        { "key" : "Da", "score" : 0, "mode" : "sub" },
+                        { "key" : "Db", "score" : 2, "mode" : "sub" },
+                        { "key" : "Da", "score" : 5, "mode" : "sub" },
+                        { "key" : "Ea", "score" : 5, "mode" : "sub" },
+                        { "key" : "Eb", "score" : 2, "mode" : "sub" },
+                        { "key" : "Ec", "score" : 0, "mode" : "sub" }
+                    ]
+                },
+                {
+                    "quest_id" : 4,
+                    "options": [
+                        { "key" : "Fa", "score" : 0, "mode" : "sum" },
+                        { "key" : "Fb", "score" : 3, "mode" : "sum" },
+                        { "key" : "Fc", "score" : 5, "mode" : "sum" },
+                        { "key" : "Fd", "score" : 5, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 5,
+                    "options": [
+                        { "key" : "Ga", "score" : 3, "mode" : "sum" },
+                        { "key" : "Gb", "score" : 0, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 6,
+                    "options": [
+                        { "key" : "Ha", "score" : 2, "mode" : "sum" },
+                        { "key" : "Hb", "score" : 0, "mode" : "sum" }
+                    ]
+                }
+            ],
+            "max-score": "20"
+        },
+        {
+            "id": 2,
+            "name": "Eje 2 - Formación",
+            "responses": [
+                {
+                    "quest_id" : 7,
+                    "options": [
+                        { "key" : "Ia", "score" : 0, "mode" : "prop" },
+                        { "key" : "Ib", "score" : 1, "mode" : "prop" },
+                        { "key" : "Ic", "score" : 2, "mode" : "prop" },
+                        { "key" : "Id", "score" : 3, "mode" : "prop" },
+                        { "key" : "Ja", "score" : 0, "mode" : "prop" },
+                        { "key" : "Jb", "score" : 1, "mode" : "prop" },
+                        { "key" : "Jc", "score" : 2, "mode" : "prop" },
+                        { "key" : "Jd", "score" : 3, "mode" : "prop" }
+                    ]
+                },
+                {
+                    "quest_id" : 8,
+                    "options": [
+                        { "key" : "Ka", "score" : 0, "mode" : "sum" },
+                        { "key" : "Kb", "score" : 1, "mode" : "sum" },
+                        { "key" : "Kc", "score" : 2, "mode" : "sum" },
+                        { "key" : "Kd", "score" : 3, "mode" : "sum" },
+                        { "key" : "Ke", "score" : 5, "mode" : "sum" }
+                    ]
+                }
+            ],
+            "max-score": "10"
+        },
+        {
+            "id": 3,
+            "name": "Eje 3 - Networking",
+            "responses": [
+                {
+                    "quest_id" : 9,
+                    "options": [
+                        { "key" : "La", "score" : 0, "mode" : "sum" },
+                        { "key" : "Lb", "score" : 5, "mode" : "sum" },
+                        { "key" : "Lc", "score" : 15, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 10,
+                    "options": [
+                        { "key" : "Ma", "score" : 0, "mode" : "sum" },
+                        { "key" : "Mb", "score" : 1, "mode" : "sum" },
+                        { "key" : "Mc", "score" : 3, "mode" : "sum" },
+                        { "key" : "Md", "score" : 5, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 11,
+                    "options": [
+                        { "key" : "Na", "score" : 0, "mode" : "sum" },
+                        { "key" : "Nb", "score" : 0, "mode" : "sum" },
+                        { "key" : "Nc", "score" : 1, "mode" : "sum" },
+                        { "key" : "Nd", "score" : 2, "mode" : "sum" },
+                        { "key" : "Ne", "score" : 5, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 12,
+                    "options": [
+                        { "key" : "Oa", "score" : 0, "mode" : "sum" },
+                        { "key" : "Ob", "score" : 5, "mode" : "sum" },
+                        { "key" : "Oc", "score" : 5, "mode" : "sum" }
+                    ]
+                }
+            ],
+            "max-score": "30"
+        },
+        {
+            "id": 4,
+            "name": "Eje 4 - Actitud y Autoestima",
+            "responses": [
+                {
+                    "quest_id" : 13,
+                    "options": [
+                        { "key" : "Pa", "score" : 0, "mode" : "sum" },
+                        { "key" : "Pb", "score" : 1, "mode" : "sum" },
+                        { "key" : "Pc", "score" : 2, "mode" : "sum" },
+                        { "key" : "Pd", "score" : 5, "mode" : "sum" },
+                        { "key" : "Pe", "score" : 3, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 14,
+                    "options": [
+                        { "key" : "Qa", "score" : 3, "mode" : "sum" },
+                        { "key" : "Qb", "score" : 5, "mode" : "sum" },
+                        { "key" : "Qc", "score" : 1, "mode" : "sum" },
+                        { "key" : "Qd", "score" : 0, "mode" : "sum" },
+                        { "key" : "Qe", "score" : 0, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 15,
+                    "options": [
+                        { "key" : "Ra", "score" : 0, "mode" : "sum" },
+                        { "key" : "Rb", "score" : 0, "mode" : "sum" },
+                        { "key" : "Rc", "score" : 5, "mode" : "sum" },
+                        { "key" : "Rd", "score" : 10, "mode" : "sum" },
+                        { "key" : "Re", "score" : 3, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 16,
+                    "options": [
+                        { "key" : "Sa", "score" : 0, "mode" : "sum" },
+                        { "key" : "Sb", "score" : 0, "mode" : "sum" },
+                        { "key" : "Sc", "score" : 5, "mode" : "sum" },
+                        { "key" : "Sd", "score" : 4, "mode" : "sum" },
+                        { "key" : "Se", "score" : 3, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 17,
+                    "options": [
+                        { "key" : "Ta", "score" : 1, "mode" : "sum" },
+                        { "key" : "Tb", "score" : 5, "mode" : "sum" },
+                        { "key" : "Tc", "score" : 2, "mode" : "sum" },
+                        { "key" : "Td", "score" : 0, "mode" : "sum" },
+                        { "key" : "Te", "score" : 0, "mode" : "sum" }
+                    ]
+                }
+            ],
+            "max-score": "30"
+        },
+        {
+            "id": 5,
+            "name": "Eje 5 - Salario",
+            "responses": [
+                {
+                    "quest_id" : 18,
+                    "options": [
+                        { "key" : "Ua", "score" : 0, "mode" : "sum" },
+                        { "key" : "Ub", "score" : 2, "mode" : "sum" },
+                        { "key" : "Uc", "score" : 3, "mode" : "sum" },
+                        { "key" : "Ud", "score" : 1, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 19,
+                    "options": [
+                        { "key" : "Va", "score" : 1, "mode" : "sum" },
+                        { "key" : "Vb", "score" : 2, "mode" : "sum" },
+                        { "key" : "Vc", "score" : 1, "mode" : "sum" },
+                        { "key" : "Vd", "score" : 0, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 20,
+                    "options": [
+                        { "key" : "Wa", "score" : 0, "mode" : "sum" },
+                        { "key" : "Wb", "score" : 2, "mode" : "sum" },
+                        { "key" : "Wa", "score" : 3, "mode" : "sum" }
+                    ]
+                },
+                {
+                    "quest_id" : 21,
+                    "options": [
+                        { "key" : "Xa", "score" : 0, "mode" : "sum" },
+                        { "key" : "Xb", "score" : 2, "mode" : "sum" }
+                    ]
+                }
+            ],
+            "max-score": "10"
+        }
+    ],
+    "recommends": [
+        {
+            "axis": 1,
+            "results": [
+                {
+                    "rating": 1,
+                    "paragraph": "La experiencia y nivel del cargo presentan gran desbalance, otros factores como el impacto y la situación actual no ayudan, haciendo muy complicado lograr el Outplacement"
+                },
+                {
+                    "rating": 2,
+                    "paragraph": "La experiencia y nivel del cargo presentan fuerte desbalance, otros factores como el impacto y la situación actual no ayudan, haciendo difícil (más no imposible) lograr el Outplacement"
+                },
+                {
+                    "rating": 3,
+                    "paragraph": "La experiencia y nivel del cargo presentan desbalance, otros factores como el impacto y la situación actual no ayudan, sin embargo no son impedimento para hacer Outplacement"
+                },
+                {
+                    "rating": 4,
+                    "paragraph": "La experiencia y el nivel del cargo están balanceados, así como el impacto y situación profesional actual que son ideales para hacer Outplacement"
+                },
+                {
+                    "rating": 5,
+                    "paragraph": "La experiencia y el nivel del cargo están muy bien, así como el impacto y situación profesional actual que son ideales para hacer Outplacement"
+                }
+            ]
+        },
+        {
+            "axis": 2,
+            "results": [
+                {
+                    "rating": 1,
+                    "paragraph": "Hay factores en el inglés y/o en el balance entre la experiencia y la formación que hacen muy complicado el Outplacement"
+                },
+                {
+                    "rating": 2,
+                    "paragraph": "Hay factores en el inglés y/o en el balance entre la experiencia y la formación que hacen muy difícil (pero no imposible) el Outplacement, son factores a tener en cuenta para su proceso"
+                },
+                {
+                    "rating": 3,
+                    "paragraph": "Hay factores en el inglés y/o en el balance entre la experiencia y la formación que hacen difícil (pero no imposible) el Outplacement, son factores a tener en cuenta para su proceso"
+                },
+                {
+                    "rating": 4,
+                    "paragraph": "Hay factores en el inglés y/o en el balance entre la experiencia y la formación que no facilitan el Outplacement, pero no son factores decisivos para lograr buenos resultados"
+                },
+                {
+                    "rating": 5,
+                    "paragraph": "La experiencia y la formación están muy bien balanceadas, así como un óptimo nivel de inglés que facilitan realizar un Outplacement exitoso"
+                }
+            ]
+        },
+        {
+            "axis": 3,
+            "results": [
+                {
+                    "rating": 1,
+                    "paragraph": "Su forma de gestionar su networking y Linkedin, son un gran problema a solucionar, ya que es clave para tener un Outplacement exitoso"
+                },
+                {
+                    "rating": 2,
+                    "paragraph": "Su forma de gestionar su networking y Linkedin, son un problema serio a solucionar, ya que son la clave para tener un Outplacement exitoso"
+                },
+                {
+                    "rating": 3,
+                    "paragraph": "Su forma de gestionar su networking y Linkedin, son la clave para mejorar para tener un Outplacement exitoso"
+                },
+                {
+                    "rating": 4,
+                    "paragraph": "Su forma de gestionar su networking y Linkedin, hacen fácil tener un Outplacement exitoso"
+                },
+                {
+                    "rating": 5,
+                    "paragraph": "Su forma de gestionar su networking y Linkedin, hacen muy fácil tener un Outplacement exitoso"
+                }
+            ]
+        },
+        {
+            "axis": 4,
+            "results": [
+                {
+                    "rating": 1,
+                    "paragraph": "Hay serios problemas de actitud por su situación actual, este problema es determinante, antes de buscar ayuda para su Outplacement, el factor más importante a revisar es la actitud"
+                },
+                {
+                    "rating": 2,
+                    "paragraph": "Su actitud y autoestima no son los mejores para tener un Outplacement exitoso, entienda que lo primero que buscan las empresas cuando entrevistan a alguien, es la actitud"
+                },
+                {
+                    "rating": 3,
+                    "paragraph": "Su actitud y autoestima no son los mejores para tener un Outplacement exitoso, entienda que lo primero que buscan las empresas cuando entrevistan a alguien, es la actitud"
+                },
+                {
+                    "rating": 4,
+                    "paragraph": "Su actitud y autoestima son muy buenos para tener un Outplacement exitoso"
+                },
+                {
+                    "rating": 5,
+                    "paragraph": "Su actitud y autoestima son óptimos para tener un Outplacement exitoso"
+                }
+            ]
+        },
+        {
+            "axis": 5,
+            "results": [
+                {
+                    "rating": 1,
+                    "paragraph": "Su forma de gestionar su networking y Linkedin, son un gran problema a solucionar, ya que es clave para tener un Outplacement exitoso"
+                },
+                {
+                    "rating": 2,
+                    "paragraph": "Su forma de gestionar su networking y Linkedin, son un problema serio a solucionar, ya que son la clave para tener un Outplacement exitos"
+                },
+                {
+                    "rating": 3,
+                    "paragraph": "Su forma de gestionar su networking y Linkedin, son la clave para mejorar para tener un Outplacement exitoso"
+                },
+                {
+                    "rating": 4,
+                    "paragraph": "Su forma de gestionar su networking y Linkedin, hacen fácil tener un Outplacement exitoso"
+                },
+                {
+                    "rating": 5,
+                    "paragraph": "Sus perspectivas sobre el salario, ambiente laboral, estancamiento y su balance entre lo que gana y su experiencia son óptimos para tener un Outplacement exitoso"
+                }
+            ]
+        }
+    ],
+    "rating": [
+        {
+            "id": 1,
+            "score-range": [80, 100],
+            "color-rgb": "rgb(160, 229, 72)",
+            "color-hex": "#A0E548",
+            "name": "Resultado extraordinario"
+        },
+        {
+            "id": 2,
+            "score-range": [51, 79],
+            "color-rgb": "rgb(48, 216, 216)",
+            "color-hex": "#30D8D8",
+            "name": "Buen resultado"
+        },
+        {
+            "id": 3,
+            "score-range": [30, 50],
+            "color-rgb": "rgb(246, 196, 69)",
+            "color-hex": "#F6C445",
+            "name": "Resultado aceptable"
+        },
+        {
+            "id": 4,
+            "score-range": [10, 29],
+            "color-rgb": "rgb(228, 95, 43)",
+            "color-hex": "#e45f2b",
+            "name": "Mal resultado"
+        },
+        {
+            "id": 5,
+            "score-range": [0, 9],
+            "color-rgb": "rgb(246, 69, 69)",
+            "color-hex": "#f64545",
+            "name": "Pésimo resultado"
+        }
+    ],
+    "axis_score_focus_rating": [
+        { "axis": 1, "focus-range": [15, 20], "rating": 1 },
+        { "axis": 1, "focus-range": [9, 14], "rating": 3 },
+        { "axis": 1, "focus-range": [0, 8], "rating": 5 },
+        { "axis": 2, "focus-range": [9, 10], "rating": 1 },
+        { "axis": 2, "focus-range": [6, 8], "rating": 2 },
+        { "axis": 2, "focus-range": [3, 5], "rating": 4 },
+        { "axis": 2, "focus-range": [0, 2], "rating": 5 },
+        { "axis": 3, "focus-range": [16, 30], "rating": 1 },
+        { "axis": 3, "focus-range": [3, 15], "rating": 3 },
+        { "axis": 3, "focus-range": [0, 2], "rating": 5 },
+        { "axis": 4, "focus-range": [17, 30], "rating": 1 },
+        { "axis": 4, "focus-range": [2, 16], "rating": 3 },
+        { "axis": 4, "focus-range": [0, 1], "rating": 5 },
+        { "axis": 5, "focus-range": [9, 10], "rating": 1 },
+        { "axis": 5, "focus-range": [3, 8], "rating": 4 },
+        { "axis": 5, "focus-range": [0, 2], "rating": 5 }
+    ]
+}

@@ -96,49 +96,33 @@
     },
     {
         "category" : {
-            "id" : "s3",
-            "display_name" : "Testimonios de Suricatum"
+            "id" : "s4",
+            "display_name" : "Charlas Grupales"
         },
         "contents" : [
             {
                 "images" : {
-                    "content_cover" : "http://www.suricatum.com/wp-content/uploads/2023/11/cover_suricatum-tv_testimonio_3.jpg" 
+                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/919db47c5cb407aa469d9a7d376c3042/thumbnails/thumbnail.jpg" 
                 },
-                "tag" : "Testimonio",
-                "content_title" : "No tuvo que pasar por el Programa",
-                "content_url" : "7fcc88d23e00f3dfd6eafcb3ed5e7012"
+                "tag" : "2024/01/28",
+                "content_title" : "Relacionamiento, mi némesis",
+                "content_url" : "919db47c5cb407aa469d9a7d376c3042"
             },
             {
                 "images" : {
-                    "content_cover" : "http://www.suricatum.com/wp-content/uploads/2023/11/cover_suricatum-tv_testimonio_5.jpg" 
+                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/fc7e00110e726a81e92298b5846c85a3/thumbnails/thumbnail.jpg" 
                 },
-                "tag" : "Testimonio",
-                "content_title" : "En dos meses consiguió un gran empleo en Pereira - Outplacement",
-                "content_url" : "49f16ee1e8e4a101ffb23753b4444f3b"
+                "tag" : "2024/01/29",
+                "content_title" : "¡Sé tu mismo! ¿Fácil no? ¿O no?",
+                "content_url" : "fc7e00110e726a81e92298b5846c85a3"
             },
             {
                 "images" : {
-                    "content_cover" : "http://www.suricatum.com/wp-content/uploads/2023/11/cover_suricatum-tv_testimonio_4.jpg" 
+                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/bb6745ff137e5bef50d0257eb889b1cf/thumbnails/thumbnail.jpg" 
                 },
-                "tag" : "Testimonio",
-                "content_title" : "La experiencia de Paola Castro en nuestro Programa de Outplacement",
-                "content_url" : "64d7136e7f89746b84e6ed2303ecb23f"
-            },
-            {
-                "images" : {
-                    "content_cover" : "http://www.suricatum.com/wp-content/uploads/2023/11/cover_suricatum-tv_testimonio_2.jpg" 
-                },
-                "tag" : "Testimonio",
-                "content_title" : "¿Pasar por el Programa de Outplacement de Suricatum es fácil?",
-                "content_url" : "dc04d9051e5866c778e8c5ee9be0fd59"
-            },
-            {
-                "images" : {
-                    "content_cover" : "http://www.suricatum.com/wp-content/uploads/2023/11/cover_suricatum-tv_testimonio_1.jpg" 
-                },
-                "tag" : "Testimonio",
-                "content_title" : "Outplacement en Estados Unidos 🇺🇸??????? - Ana María Avellaneda",
-                "content_url" : "3369f0cfa751d97c7c73aee5a8081bf1"
+                "tag" : "2024/01/24",
+                "content_title" : "Por qué llegué al Programa de Suricatum",
+                "content_url" : "bb6745ff137e5bef50d0257eb889b1cf"
             }
         ]
     }

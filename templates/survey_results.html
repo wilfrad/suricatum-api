@@ -1,0 +1,98 @@
+{% if survey_name == survey_type.TEST_OUTPLACEMENT %}
+    <div class="shrink-0 max-h-screen flex lg:flex-col lg:w-1/4 space-y-4">
+        <div class="w-full flex flex-col justify-center items-center">
+            <div class="px-[15%] md:px-0 lg:px-[10%]">
+                <canvas id="testOutplacementChart"></canvas>
+            </div>
+            <div class="flex flex-wrap text-xs font-semibold justify-center items-center space-x-2">
+            {% for axis in response.chart_axis %}
+                <div class="inline-flex px-3 p-1 mt-2 bg-slate-200 rounded-full space-x-1">
+                    <span class="rounded-full h-4 w-4 bg-[{{ axis.color_hex }}]"></span>
+                    <span>{{ axis.short_name }}</span>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="hidden md:block">
+            <h2 class="text-lg text-slate-700 font-bold">Esquema de colores:</h2>
+            <ul class="space-y-2">
+                {% for rating in response.ratings %}
+                <li class="font-semibold rounded-xl bg-[{{ rating.color_hex }}] p-2">{{ rating.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="lg:w-3/3">
+        <ul class="space-y-4">
+            {% for tip in response.tips %}
+            <li class="min-h-20 font-semibold rounded-xl bg-[{{ tip.axis_color_hex }}] bg-opacity-50 p-0">
+                <h3 class="w-full text-xl inline-flex items-center space-x-2 rounded-t-xl bg-[{{ tip.axis_color_hex }}] p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-right-fill min-w-[24px]" viewBox="0 0 16 16">
+                        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                    </svg>
+                    {{ tip.axis_name }}
+                </h3>
+                <p class="text-md p-2">{{ tip.text }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script>
+        const ctx = window.testOutplacementChart.getContext('2d');
+        const DATA = {{ response.data }};
+        const LABELS = [
+        {% for axis in response.chart_axis %}
+            '{{ axis.short_name }}',
+        {% endfor %}
+        ];
+        new Chart(ctx, {
+            type: 'polarArea',
+            data: {
+                labels: LABELS,
+                datasets: [
+                    {
+                        label: 'Ejes',
+                        data: DATA,
+                        backgroundColor: [
+                        {% for rating in ratings %}
+                            '{{ rating.color-rgb }}',
+                        {% endfor %}
+                        ],
+                        pointBackgroundColor: 'rgba(255,99,132,1)',
+                        pointBorderColor: 'red',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(255,99,132,1)',
+                    },
+                ],
+            },
+            options: {
+                legend: {
+                    display: false,
+                    position: 'bottom',
+                },
+                layout: {
+                    padding: 10,
+                },
+                scale: {
+                    lineArc: true,
+                    angleLines: {
+                        color: 'rgba(204, 255, 51, 0.5)',
+                    },
+                    pointLabels: {
+                        display: false,
+                        fontColor: 'ff6666',
+                    },
+                    gridLines: {
+                        color: 'rgb(226, 232, 240)',
+                    },
+                    ticks: {
+                        display: false,
+                    },
+                },
+            },
+        });
+    </script>
+{% elif survey_name == survey_type.AUTO_COACHING %}
+    a
+{% endif %}
