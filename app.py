@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 from random import shuffle
+from functools import reduce
 from utils.types import get_enum_ref
 # Scrapers
 from scrapers.scraper import Scraper
@@ -48,7 +49,7 @@ def get_survey_view():
     
     total_questions = survey.get_total_questions()
     
-    return render_template("survey.html", survey=survey, survey_title=survey_title, survey_name=get_enum_ref(survey_name, Survey.Type), survey_type=Survey.Type, question_behavior=Survey.Behavior, total_questions=total_questions), 200
+    return jsonify(render_template("survey.html", survey=survey, survey_title=survey_title, survey_name=get_enum_ref(survey_name, Survey.Type), survey_type=Survey.Type, question_behavior=Survey.Behavior, total_questions=total_questions)), 200
 
 """ Get single result of survey
     Url params => 
@@ -70,7 +71,9 @@ def post_survey_response():
     
     if response is None:
         return None, 400
-
+    
+    response['total_score'] = reduce(lambda prev, next: prev + next, response.get('data', [0]))
+    
     return jsonify(render_template("survey_results.html", response=response, survey_name=get_enum_ref(survey_name, Survey.Type), survey_type=Survey.Type)), 200
 
 """ Get All user results of survey

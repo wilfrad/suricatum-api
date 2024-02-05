@@ -48,7 +48,7 @@ class AutoCoachingChecker(Checker):
                     tip = response['tip']
                     break
         
-        return tip
+        return { 'tip': tip }
 
     def get_results(self):
         return self.scores_sorted
@@ -116,7 +116,7 @@ class TestOutplacementChecker(Checker):
             if _match is None:
                 continue
             
-            result = None
+            result = 0
             for selection in list(selection_obj.values()):
                 for option in _match['options']:
                     if option['key'] == selection:
@@ -134,7 +134,8 @@ class TestOutplacementChecker(Checker):
         scores = []
         
         for item in data.values():
-            scores.append(item['score'])
+            normalize_score = int((item['score'] / item['max_score']) * 100)
+            scores.append(normalize_score)
         
         return scores
     
@@ -148,11 +149,13 @@ class TestOutplacementChecker(Checker):
             axis['short_name'] = item['short_name']
             
             for rating in self.rating:
-                cur_score = item['score']
-                if cur_score > rating['score-range'][0] and cur_score < rating['score-range'][1]:
+                normalize_score = abs((item['score'] / item['max_score']) * 100)
+                if normalize_score >= rating['score-range'][0] and normalize_score <= rating['score-range'][1]:
                     axis['rating_id'] = rating['id']
                     axis['color_rgb'] = rating['color-rgb']
                     axis['color_hex'] = rating['color-hex']
+                    
+                    break
                     
             axis_arr.append(axis)
         

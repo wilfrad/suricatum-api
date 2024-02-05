@@ -46,7 +46,7 @@
                     ]
                 }
             ],
-            "max-score": "20"
+            "max-score": 20
         },
         {
             "id": 2,
@@ -76,7 +76,7 @@
                     ]
                 }
             ],
-            "max-score": "10"
+            "max-score": 10
         },
         {
             "id": 3,
@@ -118,7 +118,7 @@
                     ]
                 }
             ],
-            "max-score": "30"
+            "max-score": 30
         },
         {
             "id": 4,
@@ -175,7 +175,7 @@
                     ]
                 }
             ],
-            "max-score": "30"
+            "max-score": 30
         },
         {
             "id": 5,
@@ -215,7 +215,7 @@
                     ]
                 }
             ],
-            "max-score": "10"
+            "max-score": 10
         }
     ],
     "recommends": [
@@ -347,14 +347,14 @@
     ],
     "rating": [
         {
-            "id": 1,
+            "id": 5,
             "score-range": [80, 100],
             "color-rgb": "rgb(160, 229, 72)",
             "color-hex": "#A0E548",
             "name": "Resultado extraordinario"
         },
         {
-            "id": 2,
+            "id": 4,
             "score-range": [51, 79],
             "color-rgb": "rgb(48, 216, 216)",
             "color-hex": "#30D8D8",
@@ -368,14 +368,14 @@
             "name": "Resultado aceptable"
         },
         {
-            "id": 4,
+            "id": 2,
             "score-range": [10, 29],
             "color-rgb": "rgb(228, 95, 43)",
             "color-hex": "#e45f2b",
             "name": "Mal resultado"
         },
         {
-            "id": 5,
+            "id": 1,
             "score-range": [0, 9],
             "color-rgb": "rgb(246, 69, 69)",
             "color-hex": "#f64545",

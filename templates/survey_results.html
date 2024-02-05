@@ -1,14 +1,15 @@
 {% if survey_name == survey_type.TEST_OUTPLACEMENT %}
-    <div class="shrink-0 max-h-screen flex lg:flex-col lg:w-1/4 space-y-4">
+    <div class="flex lg:flex-col lg:w-1/4 space-y-4">
         <div class="w-full flex flex-col justify-center items-center">
-            <div class="px-[15%] md:px-0 lg:px-[10%]">
+            <h2 class="text-lg text-slate-700 font-bold">Puntuación final: {{ response['total_score'] }} / 500</h2>
+            <div class="px-8 md:px-0 lg:px-8">
                 <canvas id="testOutplacementChart"></canvas>
             </div>
-            <div class="flex flex-wrap text-xs font-semibold justify-center items-center space-x-2">
-            {% for axis in response.chart_axis %}
+            <div class="flex flex-wrap text-xs font-semibold space-y-2">
+            {% for axis in response['chart_axis'] %}
                 <div class="inline-flex px-3 p-1 mt-2 bg-slate-200 rounded-full space-x-1">
-                    <span class="rounded-full h-4 w-4 bg-[{{ axis.color_hex }}]"></span>
-                    <span>{{ axis.short_name }}</span>
+                    <span class="rounded-full h-4 w-4 bg-[{{ axis['color_hex'] }}]"></span>
+                    <span>{{ axis['short_name'] }} / {{ response['data'][loop.index - 1] }}</span>
                 </div>
             {% endfor %}
             </div>
@@ -16,83 +17,107 @@
         <div class="hidden md:block">
             <h2 class="text-lg text-slate-700 font-bold">Esquema de colores:</h2>
             <ul class="space-y-2">
-                {% for rating in response.ratings %}
-                <li class="font-semibold rounded-xl bg-[{{ rating.color_hex }}] p-2">{{ rating.name }}</li>
+                {% for rating in response['ratings'] %}
+                <li class="font-semibold rounded-xl bg-[{{ rating['color-hex'] }}] p-2">{{ rating['name'] }}</li>
                 {% endfor %}
             </ul>
         </div>
     </div>
-    <div class="lg:w-3/3">
+    <div class="lg:w-3/4">
         <ul class="space-y-4">
-            {% for tip in response.tips %}
-            <li class="min-h-20 font-semibold rounded-xl bg-[{{ tip.axis_color_hex }}] bg-opacity-50 p-0">
-                <h3 class="w-full text-xl inline-flex items-center space-x-2 rounded-t-xl bg-[{{ tip.axis_color_hex }}] p-2">
+            {% for tip in response['tips'] %}
+            <li class="min-h-20 font-semibold rounded-xl bg-[{{ tip['color_hex'] }}] bg-opacity-50 p-0">
+                <h3 class="w-full text-xl inline-flex items-center space-x-2 rounded-t-xl bg-[{{ tip['color_hex'] }}] p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-right-fill min-w-[24px]" viewBox="0 0 16 16">
                         <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
                     </svg>
-                    {{ tip.axis_name }}
+                    {{ tip['name'] }}
                 </h3>
-                <p class="text-md p-2">{{ tip.text }}</p>
+                <p class="text-md p-2">{{ tip['text'] }}</p>
             </li>
             {% endfor %}
         </ul>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script>
         const ctx = window.testOutplacementChart.getContext('2d');
-        const DATA = {{ response.data }};
+        const DATA = {{ response['data'] }};
         const LABELS = [
-        {% for axis in response.chart_axis %}
-            '{{ axis.short_name }}',
+        {% for axis in response['chart_axis'] %}
+            '{{ axis['short_name'] }}',
         {% endfor %}
         ];
-        new Chart(ctx, {
-            type: 'polarArea',
-            data: {
-                labels: LABELS,
-                datasets: [
-                    {
-                        label: 'Ejes',
-                        data: DATA,
-                        backgroundColor: [
-                        {% for rating in ratings %}
-                            '{{ rating.color-rgb }}',
-                        {% endfor %}
+        
+        var currentChart = null
+        function initChart() {
+            if (!currentChart)
+                setTimeout(() => currentChart = chartData(), 250);
+            else {
+                currentChart.destroy()
+                setTimeout(() => currentChart = chartData(), 250);
+            }
+
+            function chartData() {
+                return new Chart(ctx, {
+                    type: 'polarArea',
+                    data: {
+                        labels: LABELS,
+                        datasets: [
+                            {
+                                label: 'Ejes',
+                                data: DATA,
+                                backgroundColor: [
+                                {% for axis in response['chart_axis'] %}
+                                    '{{ axis['color_rgb'] }}',
+                                {% endfor %}
+                                ],
+                                pointBackgroundColor: 'rgba(255,99,132,1)',
+                                pointBorderColor: 'red',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgba(255,99,132,1)',
+                            },
                         ],
-                        pointBackgroundColor: 'rgba(255,99,132,1)',
-                        pointBorderColor: 'red',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(255,99,132,1)',
                     },
-                ],
-            },
-            options: {
-                legend: {
-                    display: false,
-                    position: 'bottom',
-                },
-                layout: {
-                    padding: 10,
-                },
-                scale: {
-                    lineArc: true,
-                    angleLines: {
-                        color: 'rgba(204, 255, 51, 0.5)',
+                    options: {
+                        legend: {
+                            display: false,
+                            position: 'bottom',
+                        },
+                        layout: {
+                            padding: 10,
+                        },
+                        scale: {
+                            lineArc: true,
+                            angleLines: {
+                                color: 'rgba(204, 255, 51, 0.5)',
+                            },
+                            pointLabels: {
+                                display: false,
+                                fontColor: 'ff6666',
+                            },
+                            gridLines: {
+                                color: 'rgb(226, 232, 240)',
+                            },
+                            ticks: {
+                                display: false,
+                                max: 100,
+                                min: 0,
+                                beginAtZero:true,
+                                stepSize: 20
+                            }
+                        },
                     },
-                    pointLabels: {
-                        display: false,
-                        fontColor: 'ff6666',
-                    },
-                    gridLines: {
-                        color: 'rgb(226, 232, 240)',
-                    },
-                    ticks: {
-                        display: false,
-                    },
-                },
-            },
-        });
+                });
+            }
+        }
     </script>
-{% elif survey_name == survey_type.AUTO_COACHING %}
-    a
+{% elif survey_name == survey_type.AUTO_COACHING %} 
+    <p class="flex text-md text-slate-600 text-pretty"> 
+        <span class=""><svg
+            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-quote" viewBox="0 0 16 16">
+            <path
+            d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
+        </svg></span> 
+        {{ response['tip'] }}
+    </p>
 {% endif %}
