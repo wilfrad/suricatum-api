@@ -9,7 +9,6 @@ from scrapers.jobs_scraper import GoogleJobsScraper, MichaelPageScraper
 from contents.content import Content, get_contents_by_category, get_content_by_id, get_categories
 # Surveys
 from surveys.survey import Survey
-from surveys.validation import Checker
 from surveys.builder import get_survey, get_Checker
 from surveys.db_survey import save_results, get_result
 
@@ -51,7 +50,7 @@ def get_survey_view():
     
     return jsonify(render_template("survey.html", survey=survey, survey_title=survey_title, survey_name=get_enum_ref(survey_name, Survey.Type), survey_type=Survey.Type, question_behavior=Survey.Behavior, total_questions=total_questions)), 200
 
-""" Get single result of survey
+""" Get single result by event of survey
     Url params => 
         survey_name: form name
 

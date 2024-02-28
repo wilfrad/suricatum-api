@@ -102,35 +102,19 @@
         "contents" : [
             {
                 "images" : {
-                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/b15d43d8a7cea89e12981098250a7bdf/thumbnails/thumbnail.jpg" 
+                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/daa3e2047e1f0393b9a891500a1f939f/thumbnails/thumbnail.jpg" 
                 },
-                "tag" : "2024/01/31",
-                "content_title" : "Cómo se empleo Katte Buitrago?",
-                "content_url" : "b15d43d8a7cea89e12981098250a7bdf"
+                "tag" : "Networking Session",
+                "content_title" : "El Outplacement no necesariamente está fuera",
+                "content_url" : "daa3e2047e1f0393b9a891500a1f939f"
             },
             {
                 "images" : {
-                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/919db47c5cb407aa469d9a7d376c3042/thumbnails/thumbnail.jpg" 
+                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/04ca5f5f33f4e8fdbb68a0a3dc3eac60/thumbnails/thumbnail.jpg" 
                 },
-                "tag" : "2024/01/28",
-                "content_title" : "Relacionamiento, mi némesis",
-                "content_url" : "919db47c5cb407aa469d9a7d376c3042"
-            },
-            {
-                "images" : {
-                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/fc7e00110e726a81e92298b5846c85a3/thumbnails/thumbnail.jpg" 
-                },
-                "tag" : "2024/01/29",
-                "content_title" : "¡Sé tu mismo! ¿Fácil no? ¿O no?",
-                "content_url" : "fc7e00110e726a81e92298b5846c85a3"
-            },
-            {
-                "images" : {
-                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/bb6745ff137e5bef50d0257eb889b1cf/thumbnails/thumbnail.jpg" 
-                },
-                "tag" : "2024/01/24",
-                "content_title" : "Por qué llegué al Programa de Suricatum",
-                "content_url" : "bb6745ff137e5bef50d0257eb889b1cf"
+                "tag" : "Usuarios activos",
+                "content_title" : "El poder del auto-reconocimiento",
+                "content_url" : "04ca5f5f33f4e8fdbb68a0a3dc3eac60"
             }
         ]
     }

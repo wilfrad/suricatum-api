@@ -39,16 +39,16 @@
         </ul>
     </div>
     <script>
-        const ctx = window.testOutplacementChart.getContext('2d');
-        const DATA = {{ response['data'] }};
-        const LABELS = [
-        {% for axis in response['chart_axis'] %}
-            '{{ axis['short_name'] }}',
-        {% endfor %}
-        ];
-        
         var currentChart = null
         function initChart() {
+            const ctx = window.testOutplacementChart.getContext('2d');
+            const DATA = {{ response['data'] }};
+            const LABELS = [
+            {% for axis in response['chart_axis'] %}
+                '{{ axis['short_name'] }}',
+            {% endfor %}
+            ];
+
             if (!currentChart)
                 setTimeout(() => currentChart = chartData(), 250);
             else {

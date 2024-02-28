@@ -1,102 +1,191 @@
-<modal x-show="isOpenModal" x-data="setupModal()"
-  class="absolute z-30 top-0 left-0 w-full h-full flex flex-1 max-h-screen bg-white overflow-hidden"
-  x-transition:enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-300 transform order-first"
-  x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100 translate-y-0"
-  x-transition:leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-300 transform absolute"
-  x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-12">
-  <div class="fixed w-full flex justify-end">
-    <button @click="isOpenModal = false"
-      class="text-[#009ca6] p-1 bg-white rounded-full focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-        class="w-8 h-8 md:w-12 md:h-12">
-        <path fill-rule="evenodd"
-          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
-          clip-rule="evenodd"></path>
-      </svg>
-    </button>
-  </div>
-  <section class="w-full px-2 lg:px-12 m-4 rounded-lg bg-[#009ca6] overflow-hidden">
-    <!-- Survey template -->
-    <style>
-        .question::-webkit-scrollbar-track {
-          border: 5px solid #009ca6;
+<!-- Survey template -->
+<style>
+    .question::-webkit-scrollbar-track {
+        border: 5px solid #009ca6;
 
-          background-color: #009ca6;
-        }
+        background-color: #009ca6;
+    }
 
-        .question::-webkit-scrollbar {
-          width: 16px;
-          background-color: #009ca6;
-        }
+    .question::-webkit-scrollbar {
+        width: 16px;
+        background-color: #009ca6;
+    }
 
-        .question::-webkit-scrollbar-thumb {
-          background-color: white;
-          border-radius: 10px;
-          border: solid #009ca6 5px;
-        }
+    .question::-webkit-scrollbar-thumb {
+        background-color: white;
+        border-radius: 10px;
+        border: solid #009ca6 5px;
+    }
 
-        .question::-webkit-scrollbar-thumb:hover {
-          background-color: white;
-        }
+    .question::-webkit-scrollbar-thumb:hover {
+        background-color: white;
+    }
 
-        .question::-webkit-scrollbar-button {
-          color: white;
-          background-color: white;
-          border: solid #009ca6 5px;
-          border-radius: 10px;
-        }
+    .question::-webkit-scrollbar-button {
+        color: white;
+        background-color: white;
+        border: solid #009ca6 5px;
+        border-radius: 10px;
+    }
 
-        .question::-webkit-scrollbar-button:hover {
-          background-color: white;
-          border: solid #009ca6 2px;
-        }
-    </style>
-    <form x-data="setupForm()" class="relative h-full max-h-screen flex flex-col justify-between py-4 overflow-x-hidden overflow-y-auto">
-        <header class="w-full flex items-center justify-between py-4 pr-2 md:p-4 z-10">
-            <div class="flex items-center px-4 bg-white rounded-xl h-8 md:h-12">
-                <h1 class="text-md md:text-xl font-bold text-[#009ca6]">{{ survey_title }}</h1>
+    .question::-webkit-scrollbar-button:hover {
+        background-color: white;
+        border: solid #009ca6 2px;
+    }
+</style>
+<form x-data="setupForm()" class="relative h-full max-h-screen flex flex-col justify-between py-4 overflow-x-hidden overflow-y-auto">
+    <header class="w-full flex items-center justify-between py-4 pr-2 md:p-4 z-10">
+        <div class="flex items-center px-4 bg-white rounded-xl h-8 md:h-12">
+            <h1 class="text-md md:text-xl font-bold text-[#009ca6]">{{ survey_title }}</h1>
+        </div>
+        <div class="flex items-center justify-between md:px-4 bg-white rounded-xl h-8 md:h-12">
+            <p class="hidden md:block font-bold text-[#009ca6] md:text-lg">Pregunta:</p>
+            <div class="hidden md:flex items-center justify-center overflow-hidden bg-white rounded-full">
+                <svg class="w-24 h-24 transform translate-x-1 translate-y-1" x-cloak aria-hidden="true">
+                    <circle class="text-slate-200" stroke-width="10" stroke="currentColor" fill="transparent" r="32" cx="45" cy="45" />
+                    <circle class="text-[#009ca6]" stroke-width="10" :stroke-dasharray="circumference" :stroke-dashoffset="circumference - questPosition / questCount * circumference" stroke-linecap="round" stroke="currentColor" fill="transparent" r="32" cx="45" cy="45" />
+                </svg>
+                <span class="absolute flex flex-col items-center text-lg text-[#009ca6] font-bold" x-text="`${questPosition}/${questCount}`"></span>
             </div>
-            <div class="flex items-center justify-between md:px-4 bg-white rounded-xl h-8 md:h-12">
-                <p class="hidden md:block font-bold text-[#009ca6] md:text-lg">Pregunta:</p>
-                <div class="hidden md:flex items-center justify-center overflow-hidden bg-white rounded-full">
-                    <svg class="w-24 h-24 transform translate-x-1 translate-y-1" x-cloak aria-hidden="true">
-                        <circle class="text-slate-200" stroke-width="10" stroke="currentColor" fill="transparent" r="32" cx="45" cy="45" />
-                        <circle class="text-[#009ca6]" stroke-width="10" :stroke-dasharray="circumference" :stroke-dashoffset="circumference - questPosition / questCount * circumference" stroke-linecap="round" stroke="currentColor" fill="transparent" r="32" cx="45" cy="45" />
-                    </svg>
-                    <span class="absolute flex flex-col items-center text-lg text-[#009ca6] font-bold" x-text="`${questPosition}/${questCount}`"></span>
-                </div>
-                <div class="md:hidden flex items-center justify-center overflow-hidden bg-white rounded-full">
-                    <svg class="w-16 h-16 transform translate-x-1 translate-y-1" x-cloak aria-hidden="true">
-                        <circle class="text-slate-200" stroke-width="8" stroke="currentColor" fill="transparent" r="24" cx="28" cy="28" />
-                        <circle
-                            class="text-[#009ca6]"
-                            stroke-width="8"
-                            :stroke-dasharray="circumferenceSmall"
-                            :stroke-dashoffset="circumferenceSmall - questPosition / questCount * circumferenceSmall"
-                            stroke-linecap="round"
-                            stroke="currentColor"
-                            fill="transparent"
-                            r="24"
-                            cx="28"
-                            cy="28"
-                        />
-                    </svg>
-                    <span class="absolute flex flex-col items-center text-sm text-[#009ca6] font-bold" x-text="`${questPosition}/${questCount}`"></span>
-                </div>
+            <div class="md:hidden flex items-center justify-center overflow-hidden bg-white rounded-full">
+                <svg class="w-16 h-16 transform translate-x-1 translate-y-1" x-cloak aria-hidden="true">
+                    <circle class="text-slate-200" stroke-width="8" stroke="currentColor" fill="transparent" r="24" cx="28" cy="28" />
+                    <circle
+                        class="text-[#009ca6]"
+                        stroke-width="8"
+                        :stroke-dasharray="circumferenceSmall"
+                        :stroke-dashoffset="circumferenceSmall - questPosition / questCount * circumferenceSmall"
+                        stroke-linecap="round"
+                        stroke="currentColor"
+                        fill="transparent"
+                        r="24"
+                        cx="28"
+                        cy="28"
+                    />
+                </svg>
+                <span class="absolute flex flex-col items-center text-sm text-[#009ca6] font-bold" x-text="`${questPosition}/${questCount}`"></span>
             </div>
-        </header>
-        <section class="flex max-h-full h-full justify-center rounded-xl overflow-hidden">
-            <div class="lg:w-[80vw]" @click="validateAnswer()">
-                {% for question in survey.questions %}
-                <div class="question active flex flex-col h-full space-y-4 overflow-y-auto">
-                    <h2 class="w-full text-lg md:text-xl text-balance font-bold text-white">{{ question.statement }}</h2>
-                    {% if question.question_behavior == question_behavior.SINGLE.value %}
-                        <!-- Single question -->
-                        <div x-data="{ selection: null, isCheck: false, currentId: '{{ question.id }}-1' }" class="grid grid-flow-row-dense grid-cols-1 items-center justify-center md:grid-cols-2 gap-4">
-                            {% for key, value in question.responses[0].selections.items() %}
+        </div>
+    </header>
+    <section class="flex max-h-full h-full justify-center rounded-xl overflow-hidden">
+        <div class="lg:w-[80vw]" @click="validateAnswer()">
+            {% for question in survey.questions %}
+            <div class="question active flex flex-col h-full space-y-4 overflow-y-auto">
+                <h2 class="w-full text-lg md:text-xl text-balance font-bold text-white">{{ question.statement }}</h2>
+                {% if question.question_behavior == question_behavior.SINGLE.value %}
+                    <!-- Single question -->
+                    <div x-data="{ selection: null, isCheck: false, currentId: '{{ question.id }}-1' }" class="grid grid-flow-row-dense grid-cols-1 items-center justify-center md:grid-cols-2 gap-4">
+                        {% for key, value in question.responses[0].selections.items() %}
+                        <button
+                            type="button"
+                            @click="selection = '{{ key }}'; setResSelected(currentId, '{{ key }}'); validateAnswer(); if (!isCheck) { setTimeout(() => scrollNextElementSibling(), 500) ; isCheck = true; }"
+                            :class="{ '!text-[#009ca6]': selection === '{{ key }}' }"
+                            class="relative min-h-16 p-2 text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" :class="{ '!block': selection === '{{ key }}' }" class="hidden w-6 h-6 mr-2">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
+                            <span class="w-full text-start font-bold">{{ value }}</span>
+                        </button>
+                        {% endfor %}
+                    </div>
+                    <!-- END Single question -->
+                {% elif question.question_behavior == question_behavior.LIST.value %}
+                    <!-- Data list question -->
+                    <div x-data="{ selection: null, currentId: '{{ question.id }}-1' }" class="grid grid-flow-row-dense grid-cols-1 items-center justify-center md:grid-cols-2 gap-4">
+                        <button
+                            type="button"
+                            @click="selection = '{{ key }}'; setResSelected(currentId, '{{ key }}'); validateAnswer()"
+                            :class="{ '!text-[#009ca6]': selection === '{{ key }}' }"
+                            class="relative min-h-16 p-2 text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" :class="{ '!block': selection === '{{ key }}' }" class="hidden w-6 h-6 mr-2">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
+                            <span x-text="selectedLabel ?? 'Seleccione una categoría...'" class="w-full text-start font-bold">{{ value }}</span>
+                        </button>
+                    </div>
+                    {% for key, value in question.responses[0].selections.items() %} {% endfor %}
+                    <script>
+                        function datalist() {
+                            return {
+                                Ca: 'Ventas',
+                                Cb: 'Financiero',
+                                Cc: 'Contable o Impuestos',
+                                Cd: 'Mercadeo o Growth',
+                                Ce: 'Cadena de Suministros | Logística',
+                                Cf: 'Comercio Exterior',
+                                Cg: 'Recursos Humanos',
+                                Ch: 'Jurídico',
+                                Ci: 'Compras',
+                                Cj: 'Producción | Mantenimiento',
+                                Ck: 'HSE',
+                                Cl: 'Sostenibilidad',
+                                Cm: 'Responsabilidad Social',
+                                Cn: 'Proyectos',
+                            };
+                        }
+
+                        function listQuestSelection(datalist) {
+                            return {
+                                state: false,
+                                filter: '',
+                                list: datalist,
+                                selectedKey: null,
+                                selectedLabel: null,
+
+                                toggle() {
+                                    this.state = !this.state;
+                                    this.filter = '';
+                                },
+
+                                close() {
+                                    this.state = false;
+                                },
+
+                                select(value, key) {
+                                    this.selectedLabel = value;
+                                    this.selectedKey = key;
+                                    this.state = false;
+
+                                    setResSelected(key, value);
+                                },
+
+                                isSelected(key) {
+                                    return this.selectedKey == key;
+                                },
+
+                                getList() {
+                                    if (this.filter == '') {
+                                        return this.list;
+                                    }
+                                    var filtered = Object.entries(this.list).filter(([key, value]) => value.toLowerCase().includes(this.filter.toLowerCase()));
+
+                                    var result = Object.fromEntries(filtered);
+                                    return result;
+                                },
+                            };
+                        }
+                    </script>
+                    <!-- END Data list question -->
+                {% elif question.question_behavior == question_behavior.MULTI.value %}
+                    <!-- Multiple questions -->
+                    <div x-data="{ isCheck: false, answered: 0 }" class="space-y-2">
+                        {% for sub_question in question.sub_questions %}
+                        <h2 class="text-md md:text-lg font-semibold text-white">{{ sub_question.statement }}</h2>
+                        <div x-data="{ selection: null, currentId: '{{ question.id }}-{{ loop.index }}' }" class="grid grid-cols-1 items-center md:grid-cols-2 gap-4">
+                            {% for key, value in sub_question.selections.items() %}
                             <button
                                 type="button"
-                                @click="selection = '{{ key }}'; setResSelected(currentId, '{{ key }}'); validateAnswer(); if (!isCheck) { setTimeout(() => scrollNextElementSibling(), 500) ; isCheck = true; }"
+                                @click="selection = '{{ key }}'; setResSelected(currentId, '{{ key }}'); validateAnswer(); answered++; if (!isCheck && answered > 1) { setTimeout(() => scrollNextElementSibling(), 500); isCheck = true; }"
                                 :class="{ '!text-[#009ca6]': selection === '{{ key }}' }"
                                 class="relative min-h-16 p-2 text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
                             >
@@ -111,180 +200,24 @@
                             </button>
                             {% endfor %}
                         </div>
-                        <!-- END Single question -->
-                    {% elif question.question_behavior == question_behavior.LIST.value %}
-                        <!-- Data list question -->
-                        <div x-data="{ selection: null, currentId: '{{ question.id }}-1' }" class="grid grid-flow-row-dense grid-cols-1 items-center justify-center md:grid-cols-2 gap-4">
-                            <button
-                                type="button"
-                                @click="selection = '{{ key }}'; setResSelected(currentId, '{{ key }}'); validateAnswer()"
-                                :class="{ '!text-[#009ca6]': selection === '{{ key }}' }"
-                                class="relative min-h-16 p-2 text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" :class="{ '!block': selection === '{{ key }}' }" class="hidden w-6 h-6 mr-2">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                        clip-rule="evenodd"
-                                    />
-                                </svg>
-                                <span x-text="selectedLabel ?? 'Seleccione una categoría...'" class="w-full text-start font-bold">{{ value }}</span>
-                            </button>
-                        </div>
-                        {% for key, value in question.responses[0].selections.items() %} {% endfor %}
-                        <script>
-                            function datalist() {
-                                return {
-                                    Ca: 'Ventas',
-                                    Cb: 'Financiero',
-                                    Cc: 'Contable o Impuestos',
-                                    Cd: 'Mercadeo o Growth',
-                                    Ce: 'Cadena de Suministros | Logística',
-                                    Cf: 'Comercio Exterior',
-                                    Cg: 'Recursos Humanos',
-                                    Ch: 'Jurídico',
-                                    Ci: 'Compras',
-                                    Cj: 'Producción | Mantenimiento',
-                                    Ck: 'HSE',
-                                    Cl: 'Sostenibilidad',
-                                    Cm: 'Responsabilidad Social',
-                                    Cn: 'Proyectos',
-                                };
-                            }
-
-                            function listQuestSelection(datalist) {
-                                return {
-                                    state: false,
-                                    filter: '',
-                                    list: datalist,
-                                    selectedKey: null,
-                                    selectedLabel: null,
-
-                                    toggle() {
-                                        this.state = !this.state;
-                                        this.filter = '';
-                                    },
-
-                                    close() {
-                                        this.state = false;
-                                    },
-
-                                    select(value, key) {
-                                        this.selectedLabel = value;
-                                        this.selectedKey = key;
-                                        this.state = false;
-
-                                        setResSelected(key, value);
-                                    },
-
-                                    isSelected(key) {
-                                        return this.selectedKey == key;
-                                    },
-
-                                    getList() {
-                                        if (this.filter == '') {
-                                            return this.list;
-                                        }
-                                        var filtered = Object.entries(this.list).filter(([key, value]) => value.toLowerCase().includes(this.filter.toLowerCase()));
-
-                                        var result = Object.fromEntries(filtered);
-                                        return result;
-                                    },
-                                };
-                            }
-                        </script>
-                        <!-- END Data list question -->
-                    {% elif question.question_behavior == question_behavior.MULTI.value %}
-                        <!-- Multiple questions -->
-                        <div x-data="{ isCheck: false, answered: 0 }" class="space-y-2">
-                            {% for sub_question in question.sub_questions %}
-                            <h2 class="text-md md:text-lg font-semibold text-white">{{ sub_question.statement }}</h2>
-                            <div x-data="{ selection: null, currentId: '{{ question.id }}-{{ loop.index }}' }" class="grid grid-cols-1 items-center md:grid-cols-2 gap-4">
-                                {% for key, value in sub_question.selections.items() %}
-                                <button
-                                    type="button"
-                                    @click="selection = '{{ key }}'; setResSelected(currentId, '{{ key }}'); validateAnswer(); answered++; if (!isCheck && answered > 1) { setTimeout(() => scrollNextElementSibling(), 500); isCheck = true; }"
-                                    :class="{ '!text-[#009ca6]': selection === '{{ key }}' }"
-                                    class="relative min-h-16 p-2 text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" :class="{ '!block': selection === '{{ key }}' }" class="hidden w-6 h-6 mr-2">
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                            clip-rule="evenodd"
-                                        />
-                                    </svg>
-                                    <span class="w-full text-start font-bold">{{ value }}</span>
-                                </button>
-                                {% endfor %}
-                            </div>
-                            {% endfor %}
-                        </div>
-                        <!-- END Multiple questions -->
-                    {% endif %}
-                </div>
-                {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <!-- END Multiple questions -->
+                {% endif %}
             </div>
-        </section>
-        <div class="w-full flex flex-col items-center justify-center">
-            <div x-show="isShowScrollButtons && !isFormSendable" class="flex justify-center space-x-4 mt-4">
-                <button
-                    @click="scrollPreviousElementSibling()"
-                    type="button"
-                    class="text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-center items-center space-x-2 focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
-                    :class="{ 'opacity-75' : !havePrevScroller }"
-                >
-                    <span class="text-md md:text-lg font-bold">Anterior</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="rotate-180 w-6 h-6">
-                        <path
-                            fill-rule="evenodd"
-                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z"
-                            clip-rule="evenodd"
-                        />
-                    </svg>
-                </button>
-                <button
-                    @click="scrollNextElementSibling()"
-                    type="button"
-                    class="text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-center items-center space-x-2 focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
-                    :class="{ 'opacity-75' : !haveNextScroller }"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                        <path
-                            fill-rule="evenodd"
-                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z"
-                            clip-rule="evenodd"
-                        />
-                    </svg>
-                    <span class="text-md md:text-lg font-bold">Siguiente</span>
-                </button>
-            </div>
-            {% if survey_name == survey_type.AUTO_COACHING %}
-            <!-- Auto Coaching Tip template -->
-            <tip x-show="Alpine.store('tipSuricatum').isOpenTip" class="absolute z-50 w-full bottom-4 rounded-lg bg-white border-2 border-[#95d8d8] overflow-hidden">
-              <div class="font-semibold py-4 px-2">
-                <div class="flex w-full justify-between items-center px-2">
-                  <h3 class="inline-flex text-lg text-white uppercase py-1 px-2 bg-[#009ca6] rounded-xl">Tip
-                    Suricatum</h3>
-                  <button type="button" @click="Alpine.store('tipSuricatum').isOpenTip = false"
-                    class="text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                      class="w-8 h-8 md:w-12 md:h-12">
-                      <path fill-rule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
-                        clip-rule="evenodd" />
-                    </svg>
-                  </button>
-                </div>
-                <div id="tipContainer" class="pt-4 md:pt-0 max-h-[80dvh] md:max-h-[20dvh] overflow-x-hidden overflow-y-auto">
-                </div>
-              </div>
-            </tip>
-            <!-- END Auto Coaching Tip template -->
-            {% endif %}
-            <button x-show="isFormSendable" type="submit" @click="event.preventDefault(); sendAndLoadResults(setResSelected.selection, '{{ survey_name.value }}'); isOpenModal = false" class="w-1/2 lg:w-1/3 text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-between items-center mt-4">
-                <span class="w-full text-center text-lg font-bold">Finalizar</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="-rotate-90 w-6 h-6">
+            {% endfor %}
+        </div>
+    </section>
+    <div class="w-full flex flex-col items-center justify-center">
+        <div x-show="isShowScrollButtons && !isFormSendable" class="flex justify-center space-x-4 mt-4">
+            <button
+                @click="scrollPreviousElementSibling()"
+                type="button"
+                class="text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-center items-center space-x-2 focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
+                :class="{ 'opacity-75' : !havePrevScroller }"
+            >
+                <span class="text-md md:text-lg font-bold">Anterior</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="rotate-180 w-6 h-6">
                     <path
                         fill-rule="evenodd"
                         d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z"
@@ -292,252 +225,297 @@
                     />
                 </svg>
             </button>
+            <button
+                @click="scrollNextElementSibling()"
+                type="button"
+                class="text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-center items-center space-x-2 focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
+                :class="{ 'opacity-75' : !haveNextScroller }"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path
+                        fill-rule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z"
+                        clip-rule="evenodd"
+                    />
+                </svg>
+                <span class="text-md md:text-lg font-bold">Siguiente</span>
+            </button>
         </div>
-    </form>
-    <script>
-        function setupForm() {
-            return {
-                isFormSendable: false,
-                {% if survey_name == survey_type.AUTO_COACHING %}
-                isShowScrollButtons: false,
-                {% else %}
-                isShowScrollButtons: true,
-                {% endif %}
-                questPosition: 1,
-                questCount: {{ survey.questions|length }},
-                totalQuestions: {{ total_questions }},
-                circumference: 32 * 2 * Math.PI,
-                circumferenceSmall: 24 * 2 * Math.PI,
-
-                havePrevScroller: false,
-                haveNextScroller: true,
-
-                validateAnswer() {
-                    let questsAnswered = 0;
-
-                    Object.values(setResSelected.selection).forEach(subQuestions => {
-                        questsAnswered += Object.values(subQuestions).filter(answer => answer !== undefined).length;
-                    });
-
-                    if (questsAnswered >= this.totalQuestions) this.isFormSendable = true;
-                },
-
-                scrollPreviousElementSibling() {
-                    const currentSection = document.querySelector('.question.active')
-                    if (!currentSection) return
-
-                    const prevSection = currentSection.previousElementSibling
-
-                    if (prevSection) {
-                        currentSection.classList.remove('active')
-                        prevSection.classList.add('active')
-                        prevSection.scrollIntoView({
-                            behavior: 'smooth',
-                        })
-
-                        if (!prevSection.previousElementSibling) this.havePrevScroller = false
-                    }
-
-                    if (this.questPosition > 1) {
-                        this.haveNextScroller = true
-                        this.questPosition--
-                    }
-                    else this.havePrevScroller = false
-                },
-
-                scrollNextElementSibling() {
-                    const currentSection = document.querySelector('.question.active')
-                    if (!currentSection) return
-
-                    const nextSection = currentSection.nextElementSibling
-
-                    if (nextSection) {
-                        currentSection.classList.remove('active')
-                        nextSection.classList.add('active')
-                        nextSection.scrollIntoView({
-                            behavior: 'smooth',
-                        })
-
-                        if (!nextSection.nextElementSibling) this.haveNextScroller = false
-                    }
-
-                    if (this.questPosition < this.questCount) {
-                        this.havePrevScroller = true
-                        this.questPosition++
-                    }
-                    else this.haveNextScroller = false
-                }
-            }
-        }
-
-        setResSelected.selection = {}
-        function setResSelected(key, res) {
-            let [questId, subQuestId] = key.split("-");
-            if (!setResSelected.selection[questId]) setResSelected.selection[questId] = {};
-
-            setResSelected.selection[questId][subQuestId] = res;
-
+        {% if survey_name == survey_type.AUTO_COACHING %}
+        <!-- Auto Coaching Tip template -->
+        <tip x-show="Alpine.store('tipSuricatum').isOpenTip" class="absolute z-50 w-full bottom-4 rounded-lg bg-white border-2 border-[#95d8d8] overflow-hidden">
+            <div class="font-semibold py-4 px-2">
+            <div class="flex w-full justify-between items-center px-2">
+                <h3 class="inline-flex text-lg text-white uppercase py-1 px-2 bg-[#009ca6] rounded-xl">Tip
+                Suricatum</h3>
+                <button type="button" @click="Alpine.store('tipSuricatum').isOpenTip = false"
+                class="text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="w-8 h-8 md:w-12 md:h-12">
+                    <path fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                    clip-rule="evenodd" />
+                </svg>
+                </button>
+            </div>
+            <div id="tipContainer" class="pt-4 md:pt-0 max-h-[80dvh] md:max-h-[20dvh] overflow-x-hidden overflow-y-auto">
+            </div>
+            </div>
+        </tip>
+        <!-- END Auto Coaching Tip template -->
+        {% endif %}
+        <button x-show="isFormSendable" type="submit" 
+            @click="event.preventDefault(); sendAndLoadResults(setResSelected.selection, '{{ survey_name.value }}'); Alpine.store('tabs').isOpenModal = false"
+            class="w-1/2 lg:w-1/3 text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-between items-center mt-4">
+            <span class="w-full text-center text-lg font-bold">Finalizar</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="-rotate-90 w-6 h-6">
+                <path
+                    fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-.53 14.03a.75.75 0 0 0 1.06 0l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V8.25a.75.75 0 0 0-1.5 0v5.69l-1.72-1.72a.75.75 0 0 0-1.06 1.06l3 3Z"
+                    clip-rule="evenodd"
+                />
+            </svg>
+        </button>
+    </div>
+</form>
+<script>
+    function setupForm() {
+        return {
+            isFormSendable: false,
             {% if survey_name == survey_type.AUTO_COACHING %}
-            //Auto Coaching call
-            showSuricatumTip({ key : res });
+            isShowScrollButtons: false,
+            {% else %}
+            isShowScrollButtons: true,
             {% endif %}
+            questPosition: 1,
+            questCount: {{ survey.questions|length }},
+            totalQuestions: {{ total_questions }},
+            circumference: 32 * 2 * Math.PI,
+            circumferenceSmall: 24 * 2 * Math.PI,
+
+            havePrevScroller: false,
+            haveNextScroller: true,
+
+            validateAnswer() {
+                let questsAnswered = 0;
+
+                Object.values(setResSelected.selection).forEach(subQuestions => {
+                    questsAnswered += Object.values(subQuestions).filter(answer => answer !== undefined).length;
+                });
+
+                if (questsAnswered >= this.totalQuestions) this.isFormSendable = true;
+            },
+
+            scrollPreviousElementSibling() {
+                const currentSection = document.querySelector('.question.active')
+                if (!currentSection) return
+
+                const prevSection = currentSection.previousElementSibling
+
+                if (prevSection) {
+                    currentSection.classList.remove('active')
+                    prevSection.classList.add('active')
+                    prevSection.scrollIntoView({
+                        behavior: 'smooth',
+                    })
+
+                    if (!prevSection.previousElementSibling) this.havePrevScroller = false
+                }
+
+                if (this.questPosition > 1) {
+                    this.haveNextScroller = true
+                    this.questPosition--
+                }
+                else this.havePrevScroller = false
+            },
+
+            scrollNextElementSibling() {
+                const currentSection = document.querySelector('.question.active')
+                if (!currentSection) return
+
+                const nextSection = currentSection.nextElementSibling
+
+                if (nextSection) {
+                    currentSection.classList.remove('active')
+                    nextSection.classList.add('active')
+                    nextSection.scrollIntoView({
+                        behavior: 'smooth',
+                    })
+
+                    if (!nextSection.nextElementSibling) this.haveNextScroller = false
+                }
+
+                if (this.questPosition < this.questCount) {
+                    this.havePrevScroller = true
+                    this.questPosition++
+                }
+                else this.haveNextScroller = false
+            },
+
+            sendAndLoadResults(data, survey_name) {
+                {% if survey_name == survey_type.TEST_OUTPLACEMENT %}
+                // Test Outplacement call
+                showTestFullResults(data)
+                {% endif %}
+
+                {% if survey_name == survey_type.AUTO_COACHING %}
+                // Auto Coaching call
+                showResults(data)
+                {% endif %}
+
+                const apiUrl = 'http://127.0.0.1:25565/formulario/resultado?survey_name=' + survey_name;
+
+                const config = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                };
+
+                fetch(apiUrl, config)
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Error');
+                        }
+                    })
+                    .then(data => {
+                        console.log('Save success')
+                    })
+                    .catch(error => {
+                        console.error('Error post results', error);
+                    });
+            },
         }
-    </script>
+    }
 
-    {% if survey_name == survey_type.AUTO_COACHING %}
-    <!-- Auto Coaching scripts -->
-    <script>
-        Alpine.store('tipSuricatum', {
-            isOpenTip: false,
-            isSurveyComplete: false,
-        })   
+    setResSelected.selection = {}
+    function setResSelected(key, res) {
+        let [questId, subQuestId] = key.split("-");
+        if (!setResSelected.selection[questId]) setResSelected.selection[questId] = {};
 
-      function accessTipProperties(state, data) {
-        Alpine.store('tipSuricatum').isOpenTip = state;
+        setResSelected.selection[questId][subQuestId] = res;
 
-        var htmlObject = $(data);
+        {% if survey_name == survey_type.AUTO_COACHING %}
+        //Auto Coaching call
+        showSuricatumTip({ key : res });
+        {% endif %}
+    }
+</script>
 
-        $('#tipContainer').html(htmlObject);
-      } 
+{% if survey_name == survey_type.AUTO_COACHING %}
+<!-- Auto Coaching scripts -->
+<script>
+    Alpine.store('tipSuricatum', {
+        isOpenTip: false,
+        isSurveyComplete: false,
+    })   
 
-      function showSuricatumTip(data) {
-        const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=auto_coaching';
+    function accessTipProperties(state, data) {
+    Alpine.store('tipSuricatum').isOpenTip = state;
 
-        const config = {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        };
+    var htmlObject = $(data);
 
-        fetch(apiUrl, config)
-          .then(response => response.json())
-          .then(data => {
-            accessTipProperties(true, data)
-          })
-          .catch(error => {
-            console.error('Error to get survey response', error);
-          });
-      }
+    $('#tipContainer').html(htmlObject);
+    } 
 
-      function accessGlobalProperties(state, data) {
-        setTimeout(() => Alpine.store('tabs').activeTab = 2, 500);
+    function showSuricatumTip(data) {
+    const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=auto_coaching';
 
-        Alpine.store('tabs').isSurveyComplete = true
-      }
-
-      function showResults(data) {
-        const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=auto_coaching&second_view=true';
-
-        const config = {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        };
-
-        fetch(apiUrl, config)
-          .then(response => response.json())
-          .then(data => {
-            accessGlobalProperties(true, data)
-          })
-          .catch(error => {
-            console.error('Error to get survey response', error);
-          });
-      }
-    </script>
-    <!-- END Auto Coaching scripts -->
-    {% endif %}
-
-    {% if survey_name == survey_type.TEST_OUTPLACEMENT %}
-    <!-- Test Outplacement scripts -->
-    <script>
-      document.addEventListener('alpine:init', () => {
-        Alpine.store('fullScreenResults', {
-          tabIndex: 0,
-          content: '',
-        })
-      })
-
-      function accessResultsProperties(data) {
-        setTimeout(() => Alpine.store('tabs').activeTab = 2, 500);
-        
-        window.surveyResultsContainer.innerHTML = ''
-        
-        var htmlObject = $(data);
-
-        $('#surveyResultsContainer').append(htmlObject);
-      }
-
-      function showTestFullResults(data) {
-        const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=test_outplacement';
-
-        const config = {
-          method: 'POST',
-          headers: {
+    const config = {
+        method: 'POST',
+        headers: {
             'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        };
+        },
+        body: JSON.stringify(data),
+    };
 
-        fetch(apiUrl, config)
-          .then(response => response.json())
-          .then(data => {
-            accessResultsProperties(data)
-          })
-          .catch(error => {
-            console.error('Error to get survey response', error);
-          });
-      }
-    </script>
-    <!-- END Test Outplacement scripts -->
-    {% endif %}
-    <!-- END Survey template -->
-    <script>
-        function setupModal() {
-            return {
-                isOpenModal: true,
-                
-                sendAndLoadResults(data, survey_name) {
-                    {% if survey_name == survey_type.TEST_OUTPLACEMENT %}
-                    // Test Outplacement call
-                    showTestFullResults(data)
-                    {% endif %}
+    fetch(apiUrl, config)
+        .then(response => response.json())
+        .then(data => {
+        accessTipProperties(true, data)
+        })
+        .catch(error => {
+        console.error('Error to get survey response', error);
+        });
+    }
 
-                    {% if survey_name == survey_type.AUTO_COACHING %}
-                    // Auto Coaching call
-                    showResults(data)
-                    {% endif %}
+    function accessGlobalProperties(state, data) {
+    setTimeout(() => Alpine.store('tabs').activeTab = 3, 500);
 
-                    const apiUrl = 'http://127.0.0.1:25565/formulario/resultado?survey_name=' + survey_name;
+    Alpine.store('tabs').isSurveyComplete = true
+    Alpine.store('tabs').autoCoachingNotHasResults = false
+    }
 
-                    const config = {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(data),
-                    };
+    function showResults(data) {
+    const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=auto_coaching&second_view=true';
 
-                    fetch(apiUrl, config)
-                        .then(response => {
-                            if (response.ok) {
-                                return response.json();
-                            } else {
-                                throw new Error('Error');
-                            }
-                        })
-                        .then(data => {
-                            console.log('Save success')
-                        })
-                        .catch(error => {
-                            console.error('Error post results', error);
-                        });
-                },
-            };
-        }
-    </script>
-  </section>
-</modal>
+    const config = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+
+    fetch(apiUrl, config)
+        .then(response => response.json())
+        .then(data => {
+        accessGlobalProperties(true, data)
+        })
+        .catch(error => {
+        console.error('Error to get survey response', error);
+        });
+    }
+</script>
+<!-- END Auto Coaching scripts -->
+{% endif %}
+
+{% if survey_name == survey_type.TEST_OUTPLACEMENT %}
+<!-- Test Outplacement scripts -->
+<script>
+    document.addEventListener('alpine:init', () => {
+    Alpine.store('fullScreenResults', {
+        tabIndex: 0,
+        content: '',
+    })
+    })
+
+    function accessResultsProperties(data) {
+    setTimeout(() => Alpine.store('tabs').activeTab = 2, 500);
+
+    Alpine.store('tabs').testOutplacementNotHasResults = false
+    
+    window.surveyResultsContainer.innerHTML = ''
+    
+    var htmlObject = $(data);
+
+    $('#surveyResultsContainer').append(htmlObject);
+    }
+
+    function showTestFullResults(data) {
+    const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=test_outplacement';
+
+    const config = {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+
+    fetch(apiUrl, config)
+        .then(response => response.json())
+        .then(data => {
+        accessResultsProperties(data)
+        })
+        .catch(error => {
+        console.error('Error to get survey response', error);
+        });
+    }
+</script>
+<!-- END Test Outplacement scripts -->
+{% endif %}
+<!-- END Survey template -->
