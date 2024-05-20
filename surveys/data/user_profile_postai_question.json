@@ -1,0 +1,34 @@
+[
+    {
+        "id": "1",
+        "statement": "Edite los siguientes campos",
+        "responses": [
+            {
+                "statement": "Nombre del cargo buscado",
+                "selections": {"Aa" : "..."},
+                "response_behavior": "single"
+            },
+            {
+                "statement": "Sectores en los que tiene experiencia",
+                "selections": {"Ab" : "..."},
+                "response_behavior": "single"
+            },
+            {
+                "statement": "Productos y servicios en los que tiene experiencia",
+                "selections": {"Ac" : "..."},
+                "response_behavior": "single"
+            },
+            {
+                "statement": "Destreza técnica que se tiene",
+                "selections": {"Ad" : "..."},
+                "response_behavior": "single"
+            },
+            {
+                "statement": "Habilidades blandas que tienes",
+                "selections": {"Ae" : "Ejemplo : comunicación asertiva, templanza, escucha activa"},
+                "response_behavior": "single"
+            }
+        ],
+        "question_behavior": "input"
+    }
+]

@@ -15,7 +15,7 @@ class Question:
     def __init__(self, id, statement, responses, question_behavior):
         self.id = id
         self.statement = statement
-        if question_behavior == Survey.Behavior.MULTI.value:
+        if question_behavior == Survey.Behavior.MULTI.value or question_behavior == Survey.Behavior.INPUT.value:
             self.sub_questions = [ SubQuestion(**sub) for sub in responses ]
         else:
             self.responses = [ Response(**res) for res in responses ]
@@ -26,11 +26,13 @@ class Survey:
         AUTO_COACHING = 'auto_coaching'
         TEST_OUTPLACEMENT = 'test_outplacement'
         META_SEARCH = 'meta_search'
+        AI_POST_GENERATOR = 'ai_post_generator'
     
     class Behavior(Enum):
         SINGLE = 'single'
         MULTI = 'multi'
         LIST = 'list'
+        INPUT = 'input'
     
     def __init__(self, questions):
         self.questions = [ Question(**quest) for quest in questions ]
@@ -46,10 +48,17 @@ class Survey:
         if survey_name == self.Type.META_SEARCH.value :
             return 'Meta Buscador de ofertas'
         
+        if survey_name == self.Type.AI_POST_GENERATOR.value :
+            return 'Creador de posts para Linkedin'
+        
         return '...'
 
     def get_total_questions(self):
         return sum(
-            len(quest.sub_questions) if quest.question_behavior == Survey.Behavior.MULTI.value else 1 
+            len(quest.sub_questions) 
+
+            if quest.question_behavior == Survey.Behavior.MULTI.value or quest.question_behavior == Survey.Behavior.INPUT.value 
+            else 1 
+            
             for quest in self.questions
         )

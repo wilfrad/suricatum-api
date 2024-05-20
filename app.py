@@ -1,10 +1,11 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, Response, render_template, jsonify
 from random import shuffle
 from functools import reduce
 from utils.types import get_enum_ref
 # Scrapers
 from scrapers.scraper import Scraper
-from scrapers.jobs_scraper import GoogleJobsScraper, MichaelPageScraper
+from scrapers.proxy import evaluate_proxies
+from scrapers.jobs_builder import GoogleJobsScraper, IndeedScraper, MichaelPageScraper
 # Contents
 from contents.content import Content, get_contents_by_category, get_content_by_id, get_categories
 # Surveys
@@ -14,11 +15,15 @@ from surveys.db_survey import save_results, get_result
 
 app = Flask(__name__)
 
+# Scrappers init proxy service
+evaluate_proxies()
+
 @app.after_request
 def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Origin', 'https://suricatum.com')                                                               
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST')
+    
     return response
 
 @app.errorhandler(404)
@@ -42,7 +47,7 @@ def get_survey_view():
     survey = get_survey(survey_name)
     
     if survey is None:
-        return None, 404
+        return Response("{'error':'this survey namespace not exists'}", status=404, mimetype='application/json')
     
     survey_title = survey.get_survey_title(survey_name)
     
@@ -69,7 +74,7 @@ def post_survey_response():
     response = checker.get_response(data)
     
     if response is None:
-        return None, 400
+        return Response("{'error':'this survey not contain validation object'}", status=404, mimetype='application/json')
     
     response['total_score'] = reduce(lambda prev, next: prev + next, response.get('data', [0]))
     
@@ -198,17 +203,20 @@ def get_scraper_response():
     job_name = request.args.get('jobname')
 
     google: Scraper = GoogleJobsScraper(job=job_name, url_params=[])
+    indeed: Scraper = IndeedScraper(job=job_name)
     michael: Scraper = MichaelPageScraper(job=job_name)
 
     google.build_jobs()
+    indeed.build_jobs()
     michael.build_jobs()
 
-    job_list = google.get_jobs() + michael.get_jobs()
+    job_list = google.get_jobs() + indeed.get_jobs() + michael.get_jobs()
     shuffle(job_list)
     if len(job_list) % 2 != 0:
         job_list.pop()
+    
     data = { 'jobs_list' : job_list }
-    return jsonify(render_template("index.html", data=data))
+    return render_template("meta_search_results.html", data=data)
 
 if __name__ == "__main__":
     app.run(debug=True, port=25565)

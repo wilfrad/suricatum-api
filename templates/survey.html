@@ -68,7 +68,7 @@
         </div>
     </header>
     <section class="flex max-h-full h-full justify-center rounded-xl overflow-hidden">
-        <div class="lg:w-[80vw]" @click="validateAnswer()">
+        <div class="w-full md:w-[80%]" @click="validateAnswer()">
             {% for question in survey.questions %}
             <div class="question active flex flex-col h-full space-y-4 overflow-y-auto">
                 <h2 class="w-full text-lg md:text-xl text-balance font-bold text-white">{{ question.statement }}</h2>
@@ -94,6 +94,50 @@
                         {% endfor %}
                     </div>
                     <!-- END Single question -->
+                {% elif question.question_behavior == question_behavior.MULTI.value %}
+                    <!-- Multiple questions -->
+                    <div x-data="{ isCheck: false, answered: 0 }" class="space-y-2">
+                        {% for sub_question in question.sub_questions %}
+                        <h2 class="text-md md:text-lg font-semibold text-white">{{ sub_question.statement }}</h2>
+                        <div x-data="{ selection: null, currentId: '{{ question.id }}-{{ loop.index }}' }" class="grid grid-cols-1 items-center md:grid-cols-2 gap-4">
+                            {% for key, value in sub_question.selections.items() %}
+                            <button
+                                type="button"
+                                @click="selection = '{{ key }}'; setResSelected(currentId, '{{ key }}'); validateAnswer(); answered++; if (!isCheck && answered > 1) { setTimeout(() => scrollNextElementSibling(), 500); isCheck = true; }"
+                                :class="{ '!text-[#009ca6]': selection === '{{ key }}' }"
+                                class="relative min-h-16 p-2 text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" :class="{ '!block': selection === '{{ key }}' }" class="hidden w-6 h-6 mr-2">
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                <span class="w-full text-start font-bold">{{ value }}</span>
+                            </button>
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <!-- END Multiple questions -->
+                {% elif question.question_behavior == question_behavior.INPUT.value %}
+                    <!-- Multiple Input questions -->
+                    <div x-data="{ isCheck: false, answered: 0 }" class="space-y-2">
+                        {% for sub_question in question.sub_questions %}
+                        <h2 class="text-md md:text-lg font-semibold text-white" for="selectfield-{{ currentId }}">{{ sub_question.statement }}</h2>
+                        <div x-data="{ selection: null, currentId: '{{ question.id }}-{{ loop.index }}' }" class="grid grid-cols-1 items-center gap-4 px-2">
+                            {% for key, value in sub_question.selections.items() %}
+                            <input type="text" name="selectfield-{{ currentId }}" id="selectfield-{{ currentId }}" 
+                                x-on:input="if ( validateInput($event.target.value) ) { setResSelected(currentId, '{{ key }}') } else { setResSelected(currentId, null); console.log('null') } "
+                                placeholder="{{ value }}"
+                                class="relative min-h-16 lg:w-4/5 p-2 font-semibold text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
+                            />
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <!-- END Multiple Input questions -->
                 {% elif question.question_behavior == question_behavior.LIST.value %}
                     <!-- Data list question -->
                     <div x-data="{ selection: null, currentId: '{{ question.id }}-1' }" class="grid grid-flow-row-dense grid-cols-1 items-center justify-center md:grid-cols-2 gap-4">
@@ -176,33 +220,6 @@
                         }
                     </script>
                     <!-- END Data list question -->
-                {% elif question.question_behavior == question_behavior.MULTI.value %}
-                    <!-- Multiple questions -->
-                    <div x-data="{ isCheck: false, answered: 0 }" class="space-y-2">
-                        {% for sub_question in question.sub_questions %}
-                        <h2 class="text-md md:text-lg font-semibold text-white">{{ sub_question.statement }}</h2>
-                        <div x-data="{ selection: null, currentId: '{{ question.id }}-{{ loop.index }}' }" class="grid grid-cols-1 items-center md:grid-cols-2 gap-4">
-                            {% for key, value in sub_question.selections.items() %}
-                            <button
-                                type="button"
-                                @click="selection = '{{ key }}'; setResSelected(currentId, '{{ key }}'); validateAnswer(); answered++; if (!isCheck && answered > 1) { setTimeout(() => scrollNextElementSibling(), 500); isCheck = true; }"
-                                :class="{ '!text-[#009ca6]': selection === '{{ key }}' }"
-                                class="relative min-h-16 p-2 text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" :class="{ '!block': selection === '{{ key }}' }" class="hidden w-6 h-6 mr-2">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                        clip-rule="evenodd"
-                                    />
-                                </svg>
-                                <span class="w-full text-start font-bold">{{ value }}</span>
-                            </button>
-                            {% endfor %}
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <!-- END Multiple questions -->
                 {% endif %}
             </div>
             {% endfor %}
@@ -282,7 +299,7 @@
     function setupForm() {
         return {
             isFormSendable: false,
-            {% if survey_name == survey_type.AUTO_COACHING %}
+            {% if survey_name == survey_type.AUTO_COACHING or survey_name == survey_type.AI_POST_GENERATOR  %}
             isShowScrollButtons: false,
             {% else %}
             isShowScrollButtons: true,
@@ -295,6 +312,17 @@
 
             havePrevScroller: false,
             haveNextScroller: true,
+
+            validateInput(text) {
+                const inputValue = text;
+                const regex = /\w+/; 
+
+                if (regex.test(inputValue)) {
+                    return true;
+                } else { 
+                    return false;
+                }
+            },
 
             validateAnswer() {
                 let questsAnswered = 0;
@@ -359,6 +387,11 @@
                 {% endif %}
 
                 {% if survey_name == survey_type.AUTO_COACHING %}
+                // Auto Coaching call
+                showResults(data)
+                {% endif %}
+
+                {% if survey_name == survey_type.AI_POST_GENERATOR %}
                 // Auto Coaching call
                 showResults(data)
                 {% endif %}
@@ -517,5 +550,51 @@
     }
 </script>
 <!-- END Test Outplacement scripts -->
+{% endif %}
+
+{% if survey_name == survey_type.AI_POST_GENERATOR %}
+<!-- Ai post generator scripts -->
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('timeLinePosting', {
+            tabIndex: 0,
+            content: '',
+        })
+    })
+
+    function accessResultsProperties(data) {
+        setTimeout(() => Alpine.store('tabs').activeTab = 4, 500);
+
+        Alpine.store('tabs').testOutplacementNotHasResults = false
+        
+        window.surveyResultsContainer.innerHTML = ''
+        
+        var htmlObject = $(data);
+
+        $('#surveyResultsContainer').append(htmlObject);
+    }
+
+    function showResults(data) {
+    const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=ai_post_generator';
+
+    const config = {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+
+    fetch(apiUrl, config)
+        .then(response => response.json())
+        .then(data => {
+        accessResultsProperties(data)
+        })
+        .catch(error => {
+        console.error('Error to get survey response', error);
+        });
+    }
+</script>
+<!-- END Ai post generator scripts -->
 {% endif %}
 <!-- END Survey template -->

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Template layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <style>
+      ::-webkit-scrollbar-track {
+        border: 5px solid white;
+
+        background-color: #ffffff;
+      }
+
+      ::-webkit-scrollbar {
+        width: 17px;
+        background-color: #ffffff;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #95d8d8;
+        border-radius: 10px;
+        border: solid white 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #009ca6;
+      }
+
+      ::-webkit-scrollbar-button {
+        color: #009ca6;
+        background-color: #95d8d8;
+        border: solid white 5px;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-button:hover {
+        background-color: #009ca6;
+        border: solid white 2px;
+      }
+    </style>
+  </head>
+  <body class="antialiased text-gray-900 bg-white">
+    <div class="columns-2 md:columns-3 lg:columns-4">
+        <div class="relative mb-4 before:content-[''] before:rounded-md before:absolute before:inset-0">
+            {% if data.jobs_list %}
+                {% for job in data.jobs_list %}
+                <article class="w-full shadow-md hover:shadow-xl rounded-md mb-10">
+                    <div class="c-card block relative rounded-lg overflow-hidden">
+                        <header class="p-4">
+                            <span
+                                class="inline-block px-2 py-1 leading-none bg-[#95d8d8] text-[#007377] rounded-full font-semibold uppercase tracking-wide text-xs">{{
+                                job.provider.value }}</span>
+                            <h2 title="{{ job.title }}" class="mt-2 mb-2 font-bold">
+                                {{ job.title }}
+                            </h2>
+                            <p class="text-sm">{{ job.location }}</p>
+                        </header>
+                        <div class="p-4 border-t border-b text-xs text-gray-700">
+                            {% for key, value in job.details.items() %}
+                                {% if value %}
+                                    {% if key == job.JobDetail.SALARY %}
+                                    <span class="flex items-center mb-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="mr-2 text-gray-700" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5m16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0m-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674z" />
+                                        </svg>
+                                        {{ value }}
+                                    </span>
+                                    {% elif key == job.JobDetail.LOCATION %}
+                                    <span class="flex items-center mb-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="bi bi-geo-alt-fill mr-2 text-gray-700" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                                        </svg>
+                                        {{ value }}
+                                    </span>
+                                    {% elif key == job.JobDetail.POST_DATE %}
+                                    <span class="flex items-center mb-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="bi bi-calendar-week-fill mr-2 text-gray-700" viewBox="0 0 16 16">
+                                            <path
+                                                d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2M9.5 7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m3 0h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5M2 10.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5" />
+                                        </svg>
+                                        {{ value }}
+                                    </span>
+                                    {% elif key == job.JobDetail.HORARY %}
+                                    <span class="flex items-center mb-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="bi bi-clock-fill mr-2 text-gray-700" viewBox="0 0 16 16">
+                                            <path
+                                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+                                        </svg>
+                                        {{ value }}
+                                    </span>
+                                    {% elif key == job.JobDetail.CONTRACT_TYPE %}
+                                    <span class="flex items-center mb-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="bi bi-file-earmark-medical-fill mr-2 text-gray-700" viewBox="0 0 16 16">
+                                            <path
+                                                d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1m-3 2v.634l.549-.317a.5.5 0 1 1 .5.866L7 7l.549.317a.5.5 0 1 1-.5.866L6.5 7.866V8.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L5 7l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V5.5a.5.5 0 1 1 1 0m-2 4.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1m0 2h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1" />
+                                        </svg>
+                                        {{ value }}
+                                    </span>
+                                    {% elif key == job.JobDetail.NATURE %}
+                                    <span class="flex items-center mb-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="bi bi-house-fill mr-2 text-gray-700" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                            <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
+                                        </svg>
+                                        {{ value }}
+                                    </span>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <footer>
+                            <aside class="p-4 flex">
+                                <a href="{{ job.post_link }}" target="_blank"
+                                    class="w-full bg-[#009ca6] text-white hover:bg-[#95d8d8] hover:text-[#009ca6] font-bold rounded-lg py-2 px-6 inline-flex justify-center transition duration-150 ease-in-out focus:scale-[1.005]">
+                                    <span class="mr-2">Ver empleo</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
+                                        <path fill-rule="evenodd"
+                                            d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
+                                    </svg>
+                                </a>
+                            </aside>
+                        </footer>
+                    </div>
+                </article>
+                {% endfor %}
+            {% else %}
+            <p>No se han encontraron ofertas.</p>
+            {% endif %}
+        </div>
+    </div>
+  </body>
+</html>

@@ -198,10 +198,26 @@ class TestOutplacementChecker(Checker):
         return self.score
     
 class MetaSearchChecker(Checker):
-    def __init__(self) -> None:
+    def __init__(self):
         return
     
     def validate(self):
+        return
+    
+    def get_response(self):
+        return
+
+    def get_results(self):
+        return
+    
+class AiPostGeneratorChecker(Checker):
+    def __init__(self):
+        return
+    
+    def validate(self, data):
+        return
+    
+    def get_response(self, data):
         return
 
     def get_results(self):

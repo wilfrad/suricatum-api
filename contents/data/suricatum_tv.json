@@ -6,6 +6,14 @@
         "contents" : [
             {
                 "images" : {
+                    "content_cover" : "http://suricatum.com/wp-content/uploads/2023/07/cover_suricatum-tv_estrategia-outplacement.jpeg" 
+                },
+                "tag" : "Telecurso",
+                "content_title" : "Estrategia de outplacement",
+                "content_url" : "c1c3b26acfe7bd1350d61462e217ee27"
+            },
+            {
+                "images" : {
                     "content_cover" : "http://suricatum.com/wp-content/uploads/2023/05/cover_telecurso_status-enfoque-y-estudios.jpeg" 
                 },
                 "tag" : "Telecurso",
@@ -102,19 +110,35 @@
         "contents" : [
             {
                 "images" : {
-                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/daa3e2047e1f0393b9a891500a1f939f/thumbnails/thumbnail.jpg" 
+                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/bce8ab92ac95ab40b4a32f763c01a467/thumbnails/thumbnail.jpg" 
                 },
-                "tag" : "Networking Session",
-                "content_title" : "El Outplacement no necesariamente está fuera",
-                "content_url" : "daa3e2047e1f0393b9a891500a1f939f"
+                "tag" : "2024/02/27",
+                "content_title" : "Irresponsabilidad - Nadie me importa",
+                "content_url" : "bce8ab92ac95ab40b4a32f763c01a467"
             },
             {
                 "images" : {
-                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/04ca5f5f33f4e8fdbb68a0a3dc3eac60/thumbnails/thumbnail.jpg" 
+                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/1459648f2f9a9be3a56a7381d6060360/thumbnails/thumbnail.jpg" 
                 },
-                "tag" : "Usuarios activos",
-                "content_title" : "El poder del auto-reconocimiento",
-                "content_url" : "04ca5f5f33f4e8fdbb68a0a3dc3eac60"
+                "tag" : "2024/02/28",
+                "content_title" : "Egocentrismo - Falta de reconocimiento",
+                "content_url" : "1459648f2f9a9be3a56a7381d6060360"
+            },
+            {
+                "images" : {
+                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/74162bfb33f7c26b1f9e0e058a100869/thumbnails/thumbnail.jpg" 
+                },
+                "tag" : "2024/02/29",
+                "content_title" : "Negación - No soy bueno",
+                "content_url" : "74162bfb33f7c26b1f9e0e058a100869"
+            },
+            {
+                "images" : {
+                    "content_cover" : "https://customer-fulaoxikt2d31w05.cloudflarestream.com/3abc3200640b007b7f4b446f62934c6a/thumbnails/thumbnail.jpg" 
+                },
+                "tag" : "Networking Session",
+                "content_title" : "Hacks de Migue para tu programa",
+                "content_url" : "3abc3200640b007b7f4b446f62934c6a"
             }
         ]
     }
