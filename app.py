@@ -13,7 +13,7 @@ from surveys.survey import Survey
 from surveys.builder import get_survey, get_Checker
 from surveys.db_survey import save_results, get_result
 # Ai generator
-from ai_generator import API_KEY as GEMINI_AI_SECRET_KEY
+import ai_generator
 # Application
 from config import config, load_environment
 import sys
@@ -23,7 +23,7 @@ def init_variables():
     evaluate_proxies()
     
     # Ai generator init api
-    GEMINI_AI_SECRET_KEY = app.config['GEMINI_AI_SECRET_KEY']
+    ai_generator.GEMINI_AI_SECRET_KEY = app.config['GEMINI_AI_SECRET_KEY']
 
 def create_app(config_name):
     app.config.from_object(config[config_name])
@@ -34,7 +34,7 @@ app = Flask(__name__)
 
 @app.after_request
 def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Origin', app.config['ALLOW_SITES'])
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST')
     return response

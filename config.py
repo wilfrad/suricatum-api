@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 class Config:
     API_URL = os.getenv('API_URL')
     GEMINI_AI_SECRET_KEY = os.getenv('GEMINI_AI_SECRET_KEY')
+    ALLOW_SITES = os.getenv('ALLOW_SITES')
     DEBUG = os.getenv('FLASK_DEBUG', default=False)
 
 class DevelopmentConfig(Config):

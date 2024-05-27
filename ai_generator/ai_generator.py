@@ -1,8 +1,8 @@
 import google.generativeai as genai
 
-API_KEY = None
+GEMINI_AI_SECRET_KEY = None
 
-genai.configure(api_key="AIzaSyDF7EvI8Oo2BCDtnFNw8IdHg1mXWym60d0")
+genai.configure(api_key=GEMINI_AI_SECRET_KEY)
 
 # Set up the model
 generation_config = {
