@@ -1,0 +1,11 @@
+{
+  "htmlWhitespaceSensitivity": "ignore",
+  "printWidth": 300,
+  "tabWidth": 4,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "arrowParens": "avoid"
+}

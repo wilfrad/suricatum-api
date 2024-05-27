@@ -12,18 +12,31 @@ from contents.content import Content, get_contents_by_category, get_content_by_i
 from surveys.survey import Survey
 from surveys.builder import get_survey, get_Checker
 from surveys.db_survey import save_results, get_result
+# Ai generator
+from ai_generator import API_KEY as GEMINI_AI_SECRET_KEY
+# Application
+from config import config, load_environment
+import sys
+
+def init_variables():
+    # Scrappers init proxy service
+    evaluate_proxies()
+    
+    # Ai generator init api
+    GEMINI_AI_SECRET_KEY = app.config['GEMINI_AI_SECRET_KEY']
+
+def create_app(config_name):
+    app.config.from_object(config[config_name])
+
+    return app
 
 app = Flask(__name__)
 
-# Scrappers init proxy service
-evaluate_proxies()
-
 @app.after_request
 def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', 'https://suricatum.com')                                                               
+    response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST')
-    
     return response
 
 @app.errorhandler(404)
@@ -53,7 +66,7 @@ def get_survey_view():
     
     total_questions = survey.get_total_questions()
     
-    return jsonify(render_template("survey.html", survey=survey, survey_title=survey_title, survey_name=get_enum_ref(survey_name, Survey.Type), survey_type=Survey.Type, question_behavior=Survey.Behavior, total_questions=total_questions)), 200
+    return jsonify(render_template("survey.html", API_URL=app.config['API_URL'], survey=survey, survey_title=survey_title, survey_name=get_enum_ref(survey_name, Survey.Type), survey_type=Survey.Type, question_behavior=Survey.Behavior, total_questions=total_questions)), 200
 
 """ Get single result by event of survey
     Url params => 
@@ -219,4 +232,15 @@ def get_scraper_response():
     return render_template("meta_search_results.html", data=data)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=25565)
+    env = 'production'
+    if len(sys.argv) > 1 and sys.argv[1] == 'dev':
+        env = 'development'
+        load_environment(env)
+        app = create_app(env)
+        init_variables()
+        app.run(port=25565)
+    else:
+        load_environment(env)
+        app = create_app(env)
+        init_variables()
+        app.run()

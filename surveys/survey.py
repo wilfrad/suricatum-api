@@ -49,7 +49,7 @@ class Survey:
             return 'Meta Buscador de ofertas'
         
         if survey_name == self.Type.AI_POST_GENERATOR.value :
-            return 'Creador de posts para Linkedin'
+            return 'Creador de posts'
         
         return '...'
 

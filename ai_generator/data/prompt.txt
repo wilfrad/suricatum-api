@@ -1,0 +1,71 @@
+Mira estas estructuras de post para linkedin
+
+--------------------------------------------------
+
+1. Enfatiza un mensaje central:
+- Tesis: Define una idea principal que resuma el propósito del post.
+- Ejemplo: "Cambiar de opinión ante nueva información es una señal de inteligencia, no de indecisión."
+
+2. Plantea un problema y ofrece una solución:
+- Introducción: Describe una situación o desafío común que enfrenta tu audiencia.
+- Desarrollo: Presenta tu solución o estrategia para abordar el problema de manera efectiva.
+- Llamada a la acción: Invita a los lectores a aplicar tu solución o compartir sus experiencias.
+
+3. Comparte una historia inspiradora:
+- Introducción: Presenta una anécdota o experiencia personal relevante para el tema.
+- Desarrollo: Narra la historia de manera cautivadora, destacando lecciones aprendidas o resultados obtenidos.
+- Conclusión: Reflexiona sobre el impacto de la historia y conecta con el mensaje central.
+
+4. Destaca datos o estadísticas relevantes:
+- Introducción: Presenta cifras o estudios que respalden un argumento o idea clave.
+- Desarrollo: Analiza los datos de manera clara y concisa, destacando tendencias o hallazgos importantes.
+- Conclusión: Explica la relevancia de los datos para la audiencia y formula una pregunta o invita a la reflexión.
+
+5. Presenta un nuevo enfoque o perspectiva:
+- Introducción: Plantea una idea o concepto innovador relacionado con el tema.
+- Desarrollo: Explica tu enfoque en detalle, destacando sus beneficios o aplicaciones potenciales.
+- Llamada a la acción: Invita a los lectores a considerar tu perspectiva y compartir sus puntos de vista.
+
+6. Celebra logros o éxitos:
+- Introducción: Comparte una noticia positiva.
+- Desarrollo: Describe los detalles del logro.
+
+7. Formula una pregunta para generar debate:
+- Introducción: Plantea una interrogante provocativa o interesante relacionada con el tema.
+- Desarrollo: Proporciona contexto o información relevante para la pregunta.
+- Llamada a la acción: Anima a los lectores a responder la pregunta, compartir sus opiniones y generar un debate constructivo.
+
+8. Ofrece consejos o recomendaciones prácticas:
+- Introducción: Describe un tema o desafío común que enfrentan los lectores.
+- Desarrollo: Proporciona consejos o pasos concretos para abordar el tema de manera efectiva.
+- Llamada a la acción: Invita a los lectores a aplicar tus consejos y compartir sus experiencias.
+
+9. Comparte recursos valiosos para la comunidad:
+- Introducción: Presenta un artículo, video, herramienta o recurso útil relacionado con el tema.
+- Desarrollo: Describe brevemente el recurso y destaca sus beneficios o características principales.
+- Llamada a la acción: Invita a los lectores a acceder al recurso y compartirlo con su red de contactos.
+
+10. Presenta un listado de datos importantes:
+- Introducción: Plantea una idea o concepto innovador relacionado con el tema.
+Desarrollo: presenta el listado
+- Llamada a la acción: Invita a los lectores a considerar tu perspectiva y compartir sus puntos de vista.
+
+--------------------------------------------------
+
+Escribeme un post de máximo 200 palabras, Elige una de las estructuras al azar. Dime ¿cual de las estructuras elegiste? 
+
+& Recomienda una imagen para acompañar el post
+
+& Utiliza cinco  (5) #  etiquetas o HashTags
+
+& No es necesario que incluyas todas las palabras claves en el post
+
+& No escribas los títulos o sub titulos.
+
+& No Coloques conteo de caracteres.
+
+& No escribas la explicación
+
+--------------------------------------------------
+
+Teniendo como palabras clave:

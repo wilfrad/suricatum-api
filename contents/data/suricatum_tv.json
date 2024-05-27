@@ -2,7 +2,7 @@
     {
         "category" : {
             "id" : "s1",
-            "display_name" :"Suricatum Plus"},
+            "display_name" :"Programa"},
         "contents" : [
             {
                 "images" : {
@@ -12,6 +12,21 @@
                 "content_title" : "Estrategia de outplacement",
                 "content_url" : "c1c3b26acfe7bd1350d61462e217ee27"
             },
+            {
+                "images" : {
+                    "content_cover" : "http://suricatum.com/wp-content/uploads/2024/05/cover_que-hablarle-a-los-ceos.jpeg" 
+                },
+                "tag" : "Telecurso",
+                "content_title" : "Que hablarle a los CEO'S de otros paises",
+                "content_url" : "02ea39e97417dfc93de55479af07437a"
+            }
+        ]
+    },
+    {
+        "category" : {
+            "id" : "s2",
+            "display_name" :"Suricatum Plus"},
+        "contents" : [
             {
                 "images" : {
                     "content_cover" : "http://suricatum.com/wp-content/uploads/2023/05/cover_telecurso_status-enfoque-y-estudios.jpeg" 
@@ -64,7 +79,7 @@
     },
     {
         "category" : {
-            "id" : "s2",
+            "id" : "s3",
             "display_name" : "Analizando Ofertas laborales"
         },
         "contents" : [

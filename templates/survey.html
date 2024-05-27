@@ -33,7 +33,9 @@
         border: solid #009ca6 2px;
     }
 </style>
-<form x-data="setupForm()" class="relative h-full max-h-screen flex flex-col justify-between py-4 overflow-x-hidden overflow-y-auto">
+<form x-data="setupForm()" class="relative h-full max-h-screen flex flex-col justify-between py-4 overflow-x-hidden overflow-y-auto"
+    @keyup.enter="if (isFormSendable) { $refs.submitButton.click(); } else { $refs.nextSectionButton.click(); }"
+>
     <header class="w-full flex items-center justify-between py-4 pr-2 md:p-4 z-10">
         <div class="flex items-center px-4 bg-white rounded-xl h-8 md:h-12">
             <h1 class="text-md md:text-xl font-bold text-[#009ca6]">{{ survey_title }}</h1>
@@ -71,28 +73,44 @@
         <div class="w-full md:w-[80%]" @click="validateAnswer()">
             {% for question in survey.questions %}
             <div class="question active flex flex-col h-full space-y-4 overflow-y-auto">
-                <h2 class="w-full text-lg md:text-xl text-balance font-bold text-white">{{ question.statement }}</h2>
+                <h2 class="inline-block text-lg md:text-xl font-bold text-white border-b-4 border-white">
+                    {{ question.statement }}
+                </h2>
                 {% if question.question_behavior == question_behavior.SINGLE.value %}
                     <!-- Single question -->
-                    <div x-data="{ selection: null, isCheck: false, currentId: '{{ question.id }}-1' }" class="grid grid-flow-row-dense grid-cols-1 items-center justify-center md:grid-cols-2 gap-4">
+                    {% if question.responses[0].response_behavior == question_behavior.INPUT.value %}
                         {% for key, value in question.responses[0].selections.items() %}
-                        <button
-                            type="button"
-                            @click="selection = '{{ key }}'; setResSelected(currentId, '{{ key }}'); validateAnswer(); if (!isCheck) { setTimeout(() => scrollNextElementSibling(), 500) ; isCheck = true; }"
-                            :class="{ '!text-[#009ca6]': selection === '{{ key }}' }"
-                            class="relative min-h-16 p-2 text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" :class="{ '!block': selection === '{{ key }}' }" class="hidden w-6 h-6 mr-2">
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                    clip-rule="evenodd"
-                                />
-                            </svg>
-                            <span class="w-full text-start font-bold">{{ value }}</span>
-                        </button>
+                        <div x-data="{ currentId: '{{ question.id }}-{{ loop.index }}' }" 
+                            class="flex flex-col lg:px-2">
+                            <label for="selectfield-{{ question.id }}-{{ loop.index }}" class="text-lg font-bold text-white">{{ value|safe }}</label>
+                            <input type="text" name="selectfield-{{ question.id }}-{{ loop.index }}" id="selectfield-{{ question.id }}-{{ loop.index }}" 
+                                x-on:input="if ( validateInput($event.target.value) ) { setResSelected(currentId, '{{ key }}'); } else { setResSelected(currentId, null); console.log('null') }"
+                                placeholder="{{ question.statement }}..."
+                                class="relative min-h-16 lg:w-4/5 mt-4 p-2 font-semibold text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
+                            />
+                        </div>
                         {% endfor %}
-                    </div>
+                    {% else %}
+                        <div x-data="{ selection: null, isCheck: false, currentId: '{{ question.id }}-1' }" class="grid grid-flow-row-dense grid-cols-1 items-center justify-center md:grid-cols-2 gap-4">
+                            {% for key, value in question.responses[0].selections.items() %}
+                            <button
+                                type="button"
+                                @click="selection = '{{ key }}'; setResSelected(currentId, '{{ key }}'); validateAnswer(); if (!isCheck) { setTimeout(() => scrollNextElementSibling(), 500) ; isCheck = true; }"
+                                :class="{ '!text-[#009ca6]': selection === '{{ key }}' }"
+                                class="relative min-h-16 p-2 text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" :class="{ '!block': selection === '{{ key }}' }" class="hidden w-6 h-6 mr-2">
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                <span class="w-full text-start font-bold">{{ value }}</span>
+                            </button>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                     <!-- END Single question -->
                 {% elif question.question_behavior == question_behavior.MULTI.value %}
                     <!-- Multiple questions -->
@@ -226,7 +244,7 @@
         </div>
     </section>
     <div class="w-full flex flex-col items-center justify-center">
-        <div x-show="isShowScrollButtons && !isFormSendable" class="flex justify-center space-x-4 mt-4">
+        <div x-show="isShowScrollButtons" class="flex justify-center space-x-4 mt-4">
             <button
                 @click="scrollPreviousElementSibling()"
                 type="button"
@@ -244,6 +262,7 @@
             </button>
             <button
                 @click="scrollNextElementSibling()"
+                x-ref="nextSectionButton"
                 type="button"
                 class="text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-center items-center space-x-2 focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
                 :class="{ 'opacity-75' : !haveNextScroller }"
@@ -281,9 +300,9 @@
         </tip>
         <!-- END Auto Coaching Tip template -->
         {% endif %}
-        <button x-show="isFormSendable" type="submit" 
+        <button x-show="isFormSendable" x-ref="submitButton" type="submit" 
             @click="event.preventDefault(); sendAndLoadResults(setResSelected.selection, '{{ survey_name.value }}'); Alpine.store('tabs').isOpenModal = false"
-            class="w-1/2 lg:w-1/3 text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-between items-center mt-4">
+            class="w-1/2 lg:w-1/4 text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-between items-center mt-4">
             <span class="w-full text-center text-lg font-bold">Finalizar</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="-rotate-90 w-6 h-6">
                 <path
@@ -299,11 +318,10 @@
     function setupForm() {
         return {
             isFormSendable: false,
-            {% if survey_name == survey_type.AUTO_COACHING or survey_name == survey_type.AI_POST_GENERATOR  %}
-            isShowScrollButtons: false,
-            {% else %}
             isShowScrollButtons: true,
-            {% endif %}
+
+            curFocusedTarget: null,
+
             questPosition: 1,
             questCount: {{ survey.questions|length }},
             totalQuestions: {{ total_questions }},
@@ -336,18 +354,19 @@
 
             scrollPreviousElementSibling() {
                 const currentSection = document.querySelector('.question.active')
-                if (!currentSection) return
+                if (!currentSection) return;
 
-                const prevSection = currentSection.previousElementSibling
-
+                const prevSection = currentSection.previousElementSibling;
+                
                 if (prevSection) {
                     currentSection.classList.remove('active')
                     prevSection.classList.add('active')
                     prevSection.scrollIntoView({
                         behavior: 'smooth',
                     })
-
-                    if (!prevSection.previousElementSibling) this.havePrevScroller = false
+                    
+                    if (!prevSection.previousElementSibling) this.havePrevScroller = false;
+                    setTimeout(() => this.focusTo(this.curFocusedTarget), 250)
                 }
 
                 if (this.questPosition > 1) {
@@ -357,20 +376,21 @@
                 else this.havePrevScroller = false
             },
 
-            scrollNextElementSibling() {
+            scrollNextElementSibling(target = null) {
                 const currentSection = document.querySelector('.question.active')
-                if (!currentSection) return
+                if (!currentSection) return;
 
-                const nextSection = currentSection.nextElementSibling
-
+                const nextSection = currentSection.nextElementSibling;
+                
                 if (nextSection) {
                     currentSection.classList.remove('active')
                     nextSection.classList.add('active')
                     nextSection.scrollIntoView({
                         behavior: 'smooth',
                     })
-
-                    if (!nextSection.nextElementSibling) this.haveNextScroller = false
+                    
+                    if (!nextSection.nextElementSibling) this.haveNextScroller = false;
+                    setTimeout(() => this.focusTo(this.curFocusedTarget), 250)
                 }
 
                 if (this.questPosition < this.questCount) {
@@ -378,6 +398,13 @@
                     this.questPosition++
                 }
                 else this.haveNextScroller = false
+            },
+
+            focusTo(target) {
+                console.log('focus to' + target)
+                const elem = document.querySelector(`#${target}`)
+                if (elem === null) return 
+                elem.focus()
             },
 
             sendAndLoadResults(data, survey_name) {
@@ -396,7 +423,7 @@
                 showResults(data)
                 {% endif %}
 
-                const apiUrl = 'http://127.0.0.1:25565/formulario/resultado?survey_name=' + survey_name;
+                const apiUrl = '{{ API_URL }}/formulario/resultado?survey_name=' + survey_name;
 
                 const config = {
                     method: 'POST',
@@ -455,7 +482,7 @@
     } 
 
     function showSuricatumTip(data) {
-    const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=auto_coaching';
+    const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name=auto_coaching';
 
     const config = {
         method: 'POST',
@@ -476,14 +503,14 @@
     }
 
     function accessGlobalProperties(state, data) {
-    setTimeout(() => Alpine.store('tabs').activeTab = 3, 500);
+    setTimeout(() => Alpine.store('tabs').activeTab = 2, 500);
 
     Alpine.store('tabs').isSurveyComplete = true
     Alpine.store('tabs').autoCoachingNotHasResults = false
     }
 
     function showResults(data) {
-    const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=auto_coaching&second_view=true';
+    const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name=auto_coaching&second_view=true';
 
     const config = {
         method: 'POST',
@@ -517,7 +544,7 @@
     })
 
     function accessResultsProperties(data) {
-    setTimeout(() => Alpine.store('tabs').activeTab = 2, 500);
+    setTimeout(() => Alpine.store('tabs').activeTab = 3, 500);
 
     Alpine.store('tabs').testOutplacementNotHasResults = false
     
@@ -529,7 +556,7 @@
     }
 
     function showTestFullResults(data) {
-    const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=test_outplacement';
+    const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name=test_outplacement';
 
     const config = {
         method: 'POST',
@@ -575,7 +602,7 @@
     }
 
     function showResults(data) {
-    const apiUrl = 'http://127.0.0.1:25565/formulario/respuesta?survey_name=ai_post_generator';
+    const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name=ai_post_generator';
 
     const config = {
         method: 'POST',

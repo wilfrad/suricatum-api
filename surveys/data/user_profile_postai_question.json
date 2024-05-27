@@ -1,34 +1,67 @@
 [
     {
         "id": "1",
-        "statement": "Edite los siguientes campos",
+        "statement": "Nombre del cargo buscado",
         "responses": [
             {
-                "statement": "Nombre del cargo buscado",
-                "selections": {"Aa" : "..."},
-                "response_behavior": "single"
-            },
-            {
-                "statement": "Sectores en los que tiene experiencia",
-                "selections": {"Ab" : "..."},
-                "response_behavior": "single"
-            },
-            {
-                "statement": "Productos y servicios en los que tiene experiencia",
-                "selections": {"Ac" : "..."},
-                "response_behavior": "single"
-            },
-            {
-                "statement": "Destreza técnica que se tiene",
-                "selections": {"Ad" : "..."},
-                "response_behavior": "single"
-            },
-            {
-                "statement": "Habilidades blandas que tienes",
-                "selections": {"Ae" : "Ejemplo : comunicación asertiva, templanza, escucha activa"},
-                "response_behavior": "single"
+                "selections": {
+                    "Aa" : "Escribe el título del puesto al que aspiras o en el que tienes experiencia. <br><br> <span class='text-lg underline'>Ejemplo:</span> <span class='font-semibold'> Analista de datos | Gerente de proyectos fotovoltaicos | Director de marketing | Ingeniero de software</span>"
+                },
+                "response_behavior": "input"
             }
         ],
-        "question_behavior": "input"
+        "question_behavior": "single"
+    },
+    {
+        "id": "2",
+        "statement": "Sectores en los que tiene experiencia",
+        "responses": [
+            {
+                "selections": {
+                    "Ba" : "Enumera los sectores o industrias en los que has trabajado, separados por comas. <br><br> <span class='text-lg underline'>Ejemplo:</span> <span class='font-semibold'> Generación de energía, transmisión de energía eléctrica</span>"
+                },
+                "response_behavior": "input"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "3",
+        "statement": "Productos y servicios en los que tiene experiencia",
+        "responses": [
+            {
+                "selections": {
+                    "Ca" : "Describe los productos o servicios con los que has trabajado directamente, separados por comas. <br><br> <span class='text-lg underline'>Ejemplo:</span> <span class='font-semibold'> Proyectos EPC, Construcción de proyectos solares, construcción de líneas de transmisión, grandes proyectos de generación</span>"
+                },
+                "response_behavior": "input"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "4",
+        "statement": "Destreza técnica que se tiene",
+        "responses": [
+            {
+                "selections": {
+                    "Da" : "Lista tus habilidades técnicas específicas, separadas por comas. <br><br> <span class='text-lg underline'>Ejemplo:</span> <span class='font-semibold'> Modelado financiero, Gestión de proyectos, metodologías ágiles, herramientas de marketing digital, diseño de líneas de transmisión</span>"
+                },
+                "response_behavior": "input"
+            }
+        ],
+        "question_behavior": "single"
+    },
+    {
+        "id": "5",
+        "statement": "Habilidades blandas que tienes",
+        "responses": [
+            {
+                "selections": {
+                    "Ea" : "Indica tus habilidades blandas o interpersonales, separadas por comas. <br><br> <span class='text-lg underline'>Ejemplo:</span> <span class='font-semibold'> comunicación asertiva, templanza, escucha activa, toma de decisiones, inteligencia emocional, creatividad</span>"
+                },
+                "response_behavior": "input"
+            }
+        ],
+        "question_behavior": "single"
     }
 ]
