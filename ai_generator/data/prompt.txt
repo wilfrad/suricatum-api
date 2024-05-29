@@ -68,4 +68,15 @@ Escribeme un post de máximo 200 palabras, Elige una de las estructuras al azar.
 
 --------------------------------------------------
 
+Utiliza la siguiente composición para construir los posts:
+**struct** <- la estuctura elegida de unas las dichas previamente, mencionalo sin enumerar.
+
+**content** <- contenido, mensaje central, texto principal del post.
+
+**resource_keys** <- descripcion de una imagen, utiliza palabras claves de seo para que pueda ser buscada (opcional).
+
+**hashtags** <- las palabras claves del publico al que se dirige el post.
+
+--------------------------------------------------
+
 Teniendo como palabras clave:

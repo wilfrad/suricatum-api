@@ -34,7 +34,7 @@ app = Flask(__name__)
 
 @app.after_request
 def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', app.config['ALLOW_SITES'])
+    response.headers.add('Access-Control-Allow-Origin', app.config['ALLOW_ORIGIN'])
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST')
     return response
@@ -66,7 +66,13 @@ def get_survey_view():
     
     total_questions = survey.get_total_questions()
     
-    return jsonify(render_template("survey.html", API_URL=app.config['API_URL'], survey=survey, survey_title=survey_title, survey_name=get_enum_ref(survey_name, Survey.Type), survey_type=Survey.Type, question_behavior=Survey.Behavior, total_questions=total_questions)), 200
+    return jsonify(render_template("survey.html", 
+                                API_URL=app.config['API_URL'], 
+                                NAME_SURVEY_URL=survey_name, 
+                                survey=survey, survey_title=survey_title, 
+                                survey_name=get_enum_ref(survey_name, Survey.Type), 
+                                survey_type=Survey.Type, question_behavior=Survey.Behavior, 
+                                total_questions=total_questions)), 200
 
 """ Get single result by event of survey
     Url params => 
@@ -83,15 +89,19 @@ def post_survey_response():
     data = request.get_json()
 
     checker = get_Checker(survey_name)
-
+    
     response = checker.get_response(data)
     
     if response is None:
         return Response("{'error':'this survey not contain validation object'}", status=404, mimetype='application/json')
     
-    response['total_score'] = reduce(lambda prev, next: prev + next, response.get('data', [0]))
+    if get_enum_ref(survey_name, Survey.Type) == Survey.Type.AUTO_COACHING:
+        response['total_score'] = reduce(lambda prev, next: prev + next, response.get('data', [0]))
     
-    return jsonify(render_template("survey_results.html", response=response, survey_name=get_enum_ref(survey_name, Survey.Type), survey_type=Survey.Type)), 200
+    return jsonify(render_template("survey_results.html", 
+                                response=response, 
+                                survey_name=get_enum_ref(survey_name, Survey.Type), 
+                                survey_type=Survey.Type)), 200
 
 """ Get All user results of survey
     Url params => 
@@ -132,7 +142,7 @@ def post_survey_result():
     
     save_results(user_id=user_id, data=checker.get_results())
     
-    return checker.get_results(), 200
+    return jsonify(checker.get_results()), 200
 
 ########################################
 # Suricatum multimedia contents routes

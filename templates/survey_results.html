@@ -121,5 +121,59 @@
         {{ response['tip'] }}
     </p>
 {% elif survey_name == survey_type.AI_POST_GENERATOR %} 
-    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 px-2 mt-4">
+        {% for post in response %}
+        <article>
+            <div class="w-full rounded-xl bg-slate-100">
+                <div class="p-2 space-y-4 text-slate-700" style="cursor: auto">
+                <header class="mt-3 flex items-center font-sans" style="cursor: auto">
+                    <div class="shrink-0">
+                    <a href="https://stackdiary.com/">
+                        <span class="sr-only">John Doe</span>
+                        <img class="h-10 w-10 rounded-full" src="https://stackdiary.com/140x100.png" alt="Ekim Kael"
+                        style="cursor: auto" />
+                    </a>
+                    </div>
+                    <div class="ml-3">
+                    <p class="text-sm font-medium text-skin-inverted">
+                        <a href="https://stackdiary.com" class="hover:underline" style="cursor: auto">
+                        John Doe
+                        </a>
+                    </p>
+                    <div class="flex space-x-1 text-sm text-skin-muted" style="cursor: auto">
+                        <time datetime="2022-02-01" style="cursor: auto">1 Feb, 2022</time>
+                        <span aria-hidden="true">·</span>
+                        <span style="cursor: auto">3 min read time</span>
+                    </div>
+                    </div>
+                </header>
+                <h1 class="text-lg leading-6 font-semibold font-sans text-skin-inverted group-hover:text-skin-primary"
+                    style="cursor: auto">
+                    {{ post.struct }}
+                </h1>
+                <p class="mt-1 text-sm font-semibold text-skin-base leading-5" style="cursor: auto">
+                    {{ post.content }}
+                </p>
+                <span class="mt-1 text-sm font-normal text-skin-base leading-5" style="cursor: auto">
+                    Recurso visual: {{ post.resource_keys }}
+                </span>
+                <footer class="flex items-center space-x-3" style="cursor: auto">
+                    <div class="flex flex-wrap items-center space-y-1 space-x-2" style="cursor: auto">
+                        {% for tag in post.hashtags %}
+                        <span
+                            class="inline-flex items-center leading-none px-2.5 py-1.5 text-sm font-medium text-skin-inverted text-slate-500 rounded-full border border-skin-input border-slate-400"
+                            style="cursor: auto">
+                            <svg class="mr-1.5 h-2 w-2 brand-react" fill="currentColor" viewBox="0 0 8 8">
+                            <circle cx="4" cy="4" r="3"></circle>
+                            </svg>
+                            #{{ tag }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </footer>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
 {% endif %}

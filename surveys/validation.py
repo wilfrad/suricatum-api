@@ -1,5 +1,8 @@
 from abc import ABC, abstractmethod
 from enum import Enum
+import json
+import concurrent.futures
+from ai_generator.ai_generator import get_post_data, parse_result_to_post
 
 class Checker(ABC):
     
@@ -212,13 +215,44 @@ class MetaSearchChecker(Checker):
     
 class AiPostGeneratorChecker(Checker):
     def __init__(self):
-        return
+        self.responses = {}
+        self.results = []
+        self.amountPosts = []
+    
+    def _build_post_object(self, posts):
+        for post_text in posts:
+            self.results.append(parse_result_to_post(post_text))
+            
+    def _json_to_simple_array(self, data):
+        result = []
+
+        for key, value in data.items():
+            result.append(value['1'])
+
+        return result
     
     def validate(self, data):
-        return
+        format_data = self._json_to_simple_array(data)
+        results = []
+        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+            future_to_result = {
+                executor.submit(get_post_data, format_data): i for i in range(4)
+            }
+            for future in concurrent.futures.as_completed(future_to_result):
+                try:
+                    result = future.result()
+                    results.append(result)
+                except Exception as e:
+                    print(f"Error to executed calls to API: {e}")
+                    
+        self._build_post_object(results)
     
     def get_response(self, data):
-        return
+        self.validate(data)
+        
+        return self.get_results()
 
     def get_results(self):
-        return
+        posts_dict = [post.to_dict() for post in self.results]
+            
+        return posts_dict

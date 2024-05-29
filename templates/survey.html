@@ -34,7 +34,7 @@
     }
 </style>
 <form x-data="setupForm()" class="relative h-full max-h-screen flex flex-col justify-between py-4 overflow-x-hidden overflow-y-auto"
-    @keyup.enter="if (isFormSendable) { $refs.submitButton.click(); } else { $refs.nextSectionButton.click(); }"
+    @keyup.enter="if (isFormSendable) { $refs.submitButton.click(); } else { $refs.scrollButton1.click(); }"
 >
     <header class="w-full flex items-center justify-between py-4 pr-2 md:p-4 z-10">
         <div class="flex items-center px-4 bg-white rounded-xl h-8 md:h-12">
@@ -84,9 +84,9 @@
                             class="flex flex-col lg:px-2">
                             <label for="selectfield-{{ question.id }}-{{ loop.index }}" class="text-lg font-bold text-white">{{ value|safe }}</label>
                             <input type="text" name="selectfield-{{ question.id }}-{{ loop.index }}" id="selectfield-{{ question.id }}-{{ loop.index }}" 
-                                x-on:input="if ( validateInput($event.target.value) ) { setResSelected(currentId, '{{ key }}'); } else { setResSelected(currentId, null); console.log('null') }"
+                                x-on:input="if ( validateInput($event.target.value) ) { setResSelected(currentId, $event.target.value); } else { setResSelected(currentId, null); console.log('null') }"
                                 placeholder="{{ question.statement }}..."
-                                class="relative min-h-16 lg:w-4/5 mt-4 p-2 font-semibold text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
+                                class="relative min-h-16 lg:w-4/5 mt-4 mr-2 font-semibold text-slate-500 bg-white rounded-xl p-1 px-4 inline-flex items-center hover:text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
                             />
                         </div>
                         {% endfor %}
@@ -244,8 +244,9 @@
         </div>
     </section>
     <div class="w-full flex flex-col items-center justify-center">
-        <div x-show="isShowScrollButtons" class="flex justify-center space-x-4 mt-4">
+        <div x-show="isShowScrollButtons" class="flex justify-center space-x-8 lg:space-x-4 mt-4">
             <button
+                x-ref="scrollButton1"
                 @click="scrollPreviousElementSibling()"
                 type="button"
                 class="text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-center items-center space-x-2 focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
@@ -262,7 +263,7 @@
             </button>
             <button
                 @click="scrollNextElementSibling()"
-                x-ref="nextSectionButton"
+                x-ref="scrollButton2"
                 type="button"
                 class="text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-center items-center space-x-2 focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]"
                 :class="{ 'opacity-75' : !haveNextScroller }"
@@ -279,30 +280,33 @@
         </div>
         {% if survey_name == survey_type.AUTO_COACHING %}
         <!-- Auto Coaching Tip template -->
-        <tip x-show="Alpine.store('tipSuricatum').isOpenTip" class="absolute z-50 w-full bottom-4 rounded-lg bg-white border-2 border-[#95d8d8] overflow-hidden">
+        <tip x-show="Alpine.store('tipSuricatum').isOpenTip"
+            class="absolute z-50 w-full bottom-4 rounded-lg bg-white border-2 border-[#95d8d8] overflow-hidden">
             <div class="font-semibold py-4 px-2">
-            <div class="flex w-full justify-between items-center px-2">
-                <h3 class="inline-flex text-lg text-white uppercase py-1 px-2 bg-[#009ca6] rounded-xl">Tip
-                Suricatum</h3>
-                <button type="button" @click="Alpine.store('tipSuricatum').isOpenTip = false"
-                class="text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                    class="w-8 h-8 md:w-12 md:h-12">
-                    <path fill-rule="evenodd"
-                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
-                    clip-rule="evenodd" />
-                </svg>
-                </button>
-            </div>
-            <div id="tipContainer" class="pt-4 md:pt-0 max-h-[80dvh] md:max-h-[20dvh] overflow-x-hidden overflow-y-auto">
-            </div>
+                <div class="flex w-full justify-between items-center px-2">
+                    <h3 class="inline-flex text-lg text-white uppercase py-1 px-2 bg-[#009ca6] rounded-xl">Tip
+                    Suricatum</h3>
+                    <button type="button" @click="Alpine.store('tipSuricatum').isOpenTip = false"
+                    class="text-[#009ca6] focus-visible:outline-none focus-visible:ring focus-visible:ring-[#95d8d8]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-8 h-8 md:w-12 md:h-12">
+                        <path fill-rule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    </button>
+                </div>
+                <div id="tipContainer" class="pt-4 md:pt-0 max-h-[80dvh] md:max-h-[20dvh] overflow-x-hidden overflow-y-auto">
+                </div>
             </div>
         </tip>
         <!-- END Auto Coaching Tip template -->
         {% endif %}
-        <button x-show="isFormSendable" x-ref="submitButton" type="submit" 
-            @click="event.preventDefault(); sendAndLoadResults(setResSelected.selection, '{{ survey_name.value }}'); Alpine.store('tabs').isOpenModal = false"
-            class="w-1/2 lg:w-1/4 text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-between items-center mt-4">
+        <button x-show="isShowSubmitButton" x-ref="submitButton" type="submit" 
+            @click="if (isFormSendable) { event.preventDefault(); sendAndLoadResults(setResSelected.selection, '{{ survey_name.value }}'); Alpine.store('tabs').isOpenModal = false; }"
+            class="w-1/2 lg:w-1/5 text-[#009ca6] bg-white rounded-lg py-1 px-2 inline-flex justify-between items-center mt-4"
+            :class="{'opacity-75' : !isFormSendable}"
+            x-bind:style="true ? 'width: ' + [$refs.scrollButton1.offsetWidth, $refs.scrollButton2.offsetWidth].reduce((a,b) => a+b, 32) + 'px' : ''">
             <span class="w-full text-center text-lg font-bold">Finalizar</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="-rotate-90 w-6 h-6">
                 <path
@@ -319,6 +323,7 @@
         return {
             isFormSendable: false,
             isShowScrollButtons: true,
+            isShowSubmitButton: true,
 
             curFocusedTarget: null,
 
@@ -349,7 +354,10 @@
                     questsAnswered += Object.values(subQuestions).filter(answer => answer !== undefined).length;
                 });
 
-                if (questsAnswered >= this.totalQuestions) this.isFormSendable = true;
+                if (questsAnswered >= this.totalQuestions) {
+                    this.isFormSendable = true;
+                    this.isShowSubmitButton = true;
+                }
             },
 
             scrollPreviousElementSibling() {
@@ -408,20 +416,7 @@
             },
 
             sendAndLoadResults(data, survey_name) {
-                {% if survey_name == survey_type.TEST_OUTPLACEMENT %}
-                // Test Outplacement call
-                showTestFullResults(data)
-                {% endif %}
-
-                {% if survey_name == survey_type.AUTO_COACHING %}
-                // Auto Coaching call
                 showResults(data)
-                {% endif %}
-
-                {% if survey_name == survey_type.AI_POST_GENERATOR %}
-                // Auto Coaching call
-                showResults(data)
-                {% endif %}
 
                 const apiUrl = '{{ API_URL }}/formulario/resultado?survey_name=' + survey_name;
 
@@ -433,6 +428,8 @@
                     body: JSON.stringify(data),
                 };
 
+                console.log(data)
+
                 fetch(apiUrl, config)
                     .then(response => {
                         if (response.ok) {
@@ -443,6 +440,7 @@
                     })
                     .then(data => {
                         console.log('Save success')
+                        console.log(data)
                     })
                     .catch(error => {
                         console.error('Error post results', error);
@@ -474,60 +472,60 @@
     })   
 
     function accessTipProperties(state, data) {
-    Alpine.store('tipSuricatum').isOpenTip = state;
+        Alpine.store('tipSuricatum').isOpenTip = state;
 
-    var htmlObject = $(data);
+        var htmlObject = $(data);
 
-    $('#tipContainer').html(htmlObject);
+        $('#tipContainer').html(htmlObject);
     } 
 
     function showSuricatumTip(data) {
-    const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name=auto_coaching';
+        const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name={{ NAME_SURVEY_URL }}';
 
-    const config = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    };
+        const config = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        };
 
-    fetch(apiUrl, config)
-        .then(response => response.json())
-        .then(data => {
-        accessTipProperties(true, data)
-        })
-        .catch(error => {
-        console.error('Error to get survey response', error);
-        });
+        fetch(apiUrl, config)
+            .then(response => response.json())
+            .then(data => {
+            accessTipProperties(true, data)
+            })
+            .catch(error => {
+            console.error('Error to get survey response', error);
+            });
     }
 
     function accessGlobalProperties(state, data) {
-    setTimeout(() => Alpine.store('tabs').activeTab = 2, 500);
+        setTimeout(() => Alpine.store('tabs').activeTab = 2, 500);
 
-    Alpine.store('tabs').isSurveyComplete = true
-    Alpine.store('tabs').autoCoachingNotHasResults = false
+        Alpine.store('tabs').isSurveyComplete = true
+        Alpine.store('tabs').autoCoachingNotHasResults = false
     }
 
     function showResults(data) {
-    const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name=auto_coaching&second_view=true';
+        const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name={{ NAME_SURVEY_URL }}&second_view=true';
 
-    const config = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    };
+        const config = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        };
 
-    fetch(apiUrl, config)
-        .then(response => response.json())
-        .then(data => {
-        accessGlobalProperties(true, data)
-        })
-        .catch(error => {
-        console.error('Error to get survey response', error);
-        });
+        fetch(apiUrl, config)
+            .then(response => response.json())
+            .then(data => {
+            accessGlobalProperties(true, data)
+            })
+            .catch(error => {
+            console.error('Error to get survey response', error);
+            });
     }
 </script>
 <!-- END Auto Coaching scripts -->
@@ -537,60 +535,14 @@
 <!-- Test Outplacement scripts -->
 <script>
     document.addEventListener('alpine:init', () => {
-    Alpine.store('fullScreenResults', {
-        tabIndex: 0,
-        content: '',
-    })
-    })
-
-    function accessResultsProperties(data) {
-    setTimeout(() => Alpine.store('tabs').activeTab = 3, 500);
-
-    Alpine.store('tabs').testOutplacementNotHasResults = false
-    
-    window.surveyResultsContainer.innerHTML = ''
-    
-    var htmlObject = $(data);
-
-    $('#surveyResultsContainer').append(htmlObject);
-    }
-
-    function showTestFullResults(data) {
-    const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name=test_outplacement';
-
-    const config = {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    };
-
-    fetch(apiUrl, config)
-        .then(response => response.json())
-        .then(data => {
-        accessResultsProperties(data)
-        })
-        .catch(error => {
-        console.error('Error to get survey response', error);
-        });
-    }
-</script>
-<!-- END Test Outplacement scripts -->
-{% endif %}
-
-{% if survey_name == survey_type.AI_POST_GENERATOR %}
-<!-- Ai post generator scripts -->
-<script>
-    document.addEventListener('alpine:init', () => {
-        Alpine.store('timeLinePosting', {
+        Alpine.store('fullScreenResults', {
             tabIndex: 0,
             content: '',
         })
     })
 
     function accessResultsProperties(data) {
-        setTimeout(() => Alpine.store('tabs').activeTab = 4, 500);
+        setTimeout(() => Alpine.store('tabs').activeTab = 3, 500);
 
         Alpine.store('tabs').testOutplacementNotHasResults = false
         
@@ -602,12 +554,12 @@
     }
 
     function showResults(data) {
-    const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name=ai_post_generator';
+    const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name={{ NAME_SURVEY_URL }}';
 
     const config = {
         method: 'POST',
         headers: {
-        'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
     };
@@ -615,13 +567,58 @@
     fetch(apiUrl, config)
         .then(response => response.json())
         .then(data => {
-        accessResultsProperties(data)
+            accessResultsProperties(data)
         })
         .catch(error => {
-        console.error('Error to get survey response', error);
+            console.error('Error to get survey response', error);
         });
     }
 </script>
-<!-- END Ai post generator scripts -->
+<!-- END Test Outplacement scripts -->
+{% endif %}
+
+{% if survey_name == survey_type.AI_POST_GENERATOR %}
+<!-- Ai Post Generator scripts -->
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('fullScreenResults', {
+            tabIndex: 0,
+            content: '',
+        })
+    })
+
+    function accessResultsProperties(data) {
+        setTimeout(() => Alpine.store('tabs').activeTab = 4, 500);
+
+        Alpine.store('tabs').postsGeneratorNotHasResults = false
+        
+        window.surveyPostsResultsContainer.innerHTML = ''
+        
+        var htmlObject = $(data);
+        $('#surveyPostsResultsContainer').append(htmlObject);
+    }
+
+    function showResults(data) {
+    const apiUrl = '{{ API_URL }}/formulario/respuesta?survey_name={{ NAME_SURVEY_URL }}';
+
+    const config = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+
+    fetch(apiUrl, config)
+        .then(response => response.json())
+        .then(data => {
+            accessResultsProperties(data)
+        })
+        .catch(error => {
+            console.error('Error to get survey response', error);
+        });
+    }
+</script>
+<!-- END Ai Post Generator scripts -->
 {% endif %}
 <!-- END Survey template -->
